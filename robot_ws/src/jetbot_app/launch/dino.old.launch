@@ -1,0 +1,4 @@
+<launch>
+  <node name="move" pkg="jetbot_app" type="move" />
+  <node name="dino_finder" pkg="jetbot_app" type="dino_finder" />
+</launch>
