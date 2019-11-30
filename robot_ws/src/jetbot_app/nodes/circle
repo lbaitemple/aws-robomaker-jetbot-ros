@@ -6,18 +6,20 @@ import logging
 from std_msgs.msg import String
 import rospkg
 import time
-
+import sys
 # initialization
 if __name__ == '__main__':
+    
+    print(sys.path)
+    
     try:
-        pub = rospy.Publisher('/move/cmd_str', String, queue_size=10)
+        pub = rospy.Publisher('/move/cmd_str', String, queue_size=1)
         rospy.init_node('circle')
-        rate = rospy.Rate(1) # 1hz
-        now = time.time()
-        future = now + 5
-        while time.time() < future and not rospy.is_shutdown():
+        rate = rospy.Rate(1) # 10hz
+        while not rospy.is_shutdown():
             rospy.loginfo("Turning Left.")
             pub.publish("left")
+            rate.sleep()
 
         pub.publish("stop")
     except Exception as e:

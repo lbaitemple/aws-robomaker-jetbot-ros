@@ -1,5 +1,28 @@
 <launch>
-  <node name="move" pkg="jetbot_app" type="move" />
-  <node name="camera" pkg="jetbot_app" type="camera" />
-  <node name="detect" pkg="jetbot_app" type="detect" />
+  
+  <param name="iot_endpoint" value="$(optenv IOT_ENDPOINT)" />
+  <param name="mqtt_port" type="int" value="$(optenv MQTT_PORT 8883)" />
+  <param name="robot_name" value="$(optenv ROBOT_NAME joystick1)" />
+  <param name="motor_controller" value="$(optenv MOTOR_CONTROLLER adafruit)" />
+  
+  <param name="ml_model_directory" value="$(optenv ML_MODEL_DIR /home/ggc_user/mlmodels/)" />
+  <param name="steering_model" value="$(optenv STEERING_MODEL_NAME best_steering_model_xy.pth)" />
+  <param name="dino_detect_model" value="$(optenv DINO_DETECT_MODEL_NAME best_dinodet_model_xy.pth)" />
+  
+  <param name="i2c_bus" type="int" value="$(optenv I2C_BUS 1)" />
+  <param name="steering_gain" type="float" value="$(optenv STEERING_GAIN 0.04)" />
+  <param name="max_pwm" type="float" value="$(optenv MAX_PWM 115.0)" />
+  <param name="speed" type="float" value="$(optenv SPEED 0.10)" />
+  <param name="steering_d_gain" type="float" value="$(optenv STEERING_D_GAIN 0.05)" />
+  <param name="steering_bias" type="float" value="$(optenv STEERING_BIAS 0.01)" />
+  
+  <param name="image_width" type="int" value="$(optenv IMAGE_WIDTH 224)" />
+  <param name="image_height" type="int" value="$(optenv IMAGE_HEIGHT 224)" />
+  
+  <rosparam param="dinosaurs">['Spinosaurus', 'Dilophosaurus', 'Stegosaurus', 'Triceratops', 'Brachiosaurus', 'Unknown']</rosparam>
+  
+  <node name="move" pkg="jetbot_app" type="move" output="stdout" />
+  <node name="camera" pkg="jetbot_app" type="camera" output="stdout" />
+  <node name="detect" pkg="jetbot_app" type="detect" output="stdout" />
+  
 </launch>

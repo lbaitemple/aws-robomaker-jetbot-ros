@@ -62,11 +62,11 @@ class DinoDetect:
         self.model_dinodet = self.model_dinodet.eval()
 
     def setup_iot_connect(self):
-        self.IOT_HOST = os.environ['IOT_ENDPOINT'].lower()
-        self.IOT_TOPIC = "dino-detect"
-        self.iotClient = AWSIoTMQTTClient('jetbot')
-        self.iotClient.configureEndpoint(ENDPOINT, 8843)
+        self.iotClient = AWSIoTMQTTClient(rospy.param("robot_name").lower())
+        self.iotClient.configureEndpoint(rospy.param("iot_endpoint").lower(), int(rospy.param("mqtt_port")))
         self.iotClient.configureCredentials(self.path(CAFILE), self.path(KEYFILE), self.path(CERTIFICATEFILE))
+        self.iotClient.configureConnectDisconnectTimeout(10)
+        self.iotClient.configureMQTTOperationTimeout(5)
         rospy.loginfo("Connecting to iot core")
         self.iotClient.connect()
 
@@ -87,8 +87,8 @@ class DinoDetect:
                 "Triceratodps",
                 "Brachiosaurus",
                 "Unknown"],
-            "road_following_model": "/home/ggc_user/best_steering_model_xy.pth",
-            "dino_detect_model": "/home/ggc_user/best_dinodet_model_xy.pth",
+            "road_following_model": "/home/ggc_user/mlmodels/best_steering_model_xy.pth",
+            "dino_detect_model": "/home/ggc_user/mlmodels/best_dinodet_model_xy.pth",
             "image_size": [224,224]
         }
         self.settings = {
@@ -153,7 +153,7 @@ class DinoDetect:
             }
 
             # Send the data to the iot cloud when you find a dino
-            self.iotClient.publish(self.IOT_TOPIC, json.dumps(message), 1)
+            self.iotClient.publish(rospy.param("robot_name").lower()+"/dinos", json.dumps(message), 1)
             self.prev_class = current_class
 
             # Stop the robot everytime you see a new robot

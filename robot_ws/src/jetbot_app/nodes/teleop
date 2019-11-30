@@ -16,15 +16,9 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 LOGLEVEL = logging.DEBUG 
 LOGNAME = 'roslaunch'
 #Set the name of the certicate files located in
-#jetbot/simulation_ws/src/jetbot_sim_app/config
 CAFILE = 'root.ca.pem'
 KEYFILE = 'private.pem.key'
 CERTIFICATEFILE = 'certificate.pem.crt'
-#MQTT Settings
-#ClientID and Topics should be unique for all MQTT connections
-TOPIC = os.environ['ROBOT_NAME'].lower()
-CLIENTID = os.environ['ROBOT_NAME'].lower()
-ENDPOINT = os.environ['IOT_ENDPOINT'].lower()
 #ROS Settings, for example application name
 ROSAPP = 'jetbot_app'
 CMD_VEL_TOPIC = '/move/cmd_vel'
@@ -57,8 +51,8 @@ class Teleop():
         This is required for the simulation to receive data from the joystick app
         """
         logger.info('Initializing AWS IoT MQTT connection')
-        self.mqtt_client = AWSIoTMQTTClient(CLIENTID)
-        self.mqtt_client.configureEndpoint(ENDPOINT, 8883)
+        self.mqtt_client = AWSIoTMQTTClient(rospy.param("robot_name").lower())
+        self.mqtt_client.configureEndpoint(rospy.param("iot_endpoint").lower(), int(rospy.param("mqtt_port")))
         self.mqtt_client.configureCredentials(self.path(CAFILE), self.path(KEYFILE), self.path(CERTIFICATEFILE))
         self.mqtt_client.configureConnectDisconnectTimeout(10)
         self.mqtt_client.configureMQTTOperationTimeout(5)
@@ -82,7 +76,7 @@ class Teleop():
         The JSON message is read from the Teleop.MQTTTOPIC, converted to a Twist message
         and published to the Teleop.ROSTOPIC
         """
-        logger.info('Received from %s, message: %s', TOPIC, message.payload)
+        logger.info('Received from %s, message: %s', rospy.param("robot_name").lower(), message.payload)
         payload = json.loads(message.payload)
         self.twist.angular.x = payload["angular"]["x"]
         self.twist.angular.y = payload["angular"]["y"]
@@ -100,8 +94,8 @@ class Teleop():
 
         Any new messages will be sent to the callback for processing
         """
-        logger.info("Subsribing to topic %s", TOPIC)
-        self.mqtt_client.subscribe(TOPIC, 1, self.custom_callback)
+        logger.info("Subsribing to topic %s", rospy.param("robot_name").lower())
+        self.mqtt_client.subscribe(rospy.param("robot_name").lower(), 1, self.custom_callback)
         return
 
     def run_robot(self):
