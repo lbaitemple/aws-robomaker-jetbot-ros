@@ -10,10 +10,20 @@
        Note: set to false for deploying to a real robot.
   -->
   <arg name="use_sim_time" default="true"/>
+  
+  <arg name="x" default="2.75"/>
+  <arg name="y" default="-14"/>
+  <arg name="z" default="0"/> 
   <arg name="model" default="$(find jetbot_description)/urdf/jetbot.urdf"/>
+  
+  
   <param name="use_sim_time" value="$(arg use_sim_time)"/>
   <include file="$(find jetbot_description)/launch/gazebo.launch">
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
     <arg name="model" value="$(arg model)" />
+    <arg name="x" value="$(arg x)" />
+    <arg name="y" value="$(arg y)" />
+    <arg name="z" value="$(arg z)" />
   </include>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
