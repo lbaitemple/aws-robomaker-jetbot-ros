@@ -13,7 +13,7 @@
   
   <arg name="x" default="2.75"/>
   <arg name="y" default="-14"/>
-  <arg name="z" default="0"/> 
+  <arg name="z" default="0.1"/> 
   <arg name="model" default="$(find jetbot_description)/urdf/jetbot.urdf"/>
   
   
