@@ -13,9 +13,9 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 1. Open the RoboMaker IDE and navigate to the terminal and clone this Git repo to the development machine:
     ```
     # change to the environment directory
-    $ cd ~/environment
-
-    $ git clone URL jetbot
+    cd ~/environment
+    git clone https://github.com/lbaitemple/aws-robomaker-jetbot-ros
+    mv aws-robomaker-jetbot-ros jetbot
     ```
 
 ### Install Dependencies [~15 mins]
