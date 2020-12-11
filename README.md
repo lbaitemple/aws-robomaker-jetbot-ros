@@ -48,6 +48,11 @@ rosdep  install --from-paths src --ignore-src -r -y
 colcon build
 colcon bundle
 ```
+
+To find IoT endpoint, you can use
+```
+aws iot describe-endpoint
+```
 1. Open the roboMakerSetting.json file in the **jetbot** directory and input S3 bucket, IAM role, MQTT endpoint and VPC public subnet ids and security group ids.
 
 1. Click Run, Add or Edit Configurations, select the roboMakerSettings.json file from jetbot directory
