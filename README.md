@@ -240,9 +240,9 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 
 1. Select the Robot application version to deploy. The robot application must have a numbered `applicationVersion` for consistency reasons. If there are no versions listed, or to create a new version, see Creating a Robot Application Version.
 
-1. Under Deployment launch config, specify the Package name: `jetbot`
+1. Under Deployment launch config, specify the Package name: `jetbot_app`
 
-1. Specify the Launch file: `rc.launch`
+1. Specify the Launch file: `teleop.launch`
   
 
 1. Environment variables, type in an environment Name and Value. Environment variable names must start with A-Z or underscore and consist of A-Z, 0-9 and underscore. Names beginning with “AWS” are reserved.
