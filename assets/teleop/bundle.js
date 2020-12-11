@@ -6,7 +6,7 @@
     
     var AWS = require('aws-sdk');
     var AWSIoTData = require('aws-iot-device-sdk');
-    var AWSConfiguration = require('./awscreds.js');
+    var AWSConfiguration = require('./aws-configuration.js');
     
     console.log('Loaded AWS SDK for JavaScript and AWS IoT SDK for Node.js');
     
@@ -29,6 +29,8 @@
     // Initialize our configuration.
     //
     AWS.config.region = AWSConfiguration.region;
+
+    console.log('Here is the thing--->' + AWSConfiguration.accessKeyId);
     
     AWS.config.credentials = new AWS.Credentials({
       accessKeyId: AWSConfiguration.accessKeyId,
@@ -70,9 +72,9 @@
        // IMPORTANT: the AWS access key ID, secret key, and sesion token must be 
        // initialized with empty strings.
        //
-       accessKeyId: '',
-       secretKey: '',
-       sessionToken: ''
+       accessKeyId: AWSConfiguration.accessKeyId,
+       secretKey: AWSConfiguration.secretAccessKey,
+       sessionToken: AWSConfiguration.sessionToken
     });
     
     //
@@ -88,8 +90,8 @@
             // Update our latest AWS credentials; the MQTT client will use these
             // during its next reconnect attempt.
             //
-            // console.log('Access Key ' + data.credentials.AccessKeyId)
-            // console.log('Access Key ' + data.Credentials.AccessKeyId)
+            console.log('%%%% Access Key ' + data)
+            //console.log('Access Key ' + data.Credentials.AccessKeyId)
    
             // shadows.updateWebSocketCredentials(data.Credentials.AccessKeyId,
             //    data.Credentials.SecretKey,
