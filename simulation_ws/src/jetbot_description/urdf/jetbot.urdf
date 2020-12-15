@@ -2,46 +2,14 @@
 <robot name="JetBot">
   <property name="M_PI_2" value="1.570796327"/>
 
-  <joint name="JetBot__left_wheel_hinge" type="continuous">
-    <parent link="JetBot__chassis"/>
-    <child link="JetBot__left_wheel"/>
-    <origin rpy="0       0       1.57079" xyz="0.03     0.05125  0.03"/>
-    <axis xyz="1  0  0"/>
-  </joint>
 
-  <transmission name="tran_jetbot_left_wheel_hinge">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="JetBot__left_wheel_hinge">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_left_wheel">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
-    </actuator>
-  </transmission>
-
-  <joint name="JetBot__right_wheel_hinge" type="continuous">
-    <parent link="JetBot__chassis"/>
-    <child link="JetBot__right_wheel"/>
-    <origin rpy="0       0       1.57079" xyz="0.03   -0.0595  0.03"/>
-    <axis xyz="1  0  0"/>
-  </joint>
-
-  <transmission name="tran_jetbot_right_wheel_hinge">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="JetBot__right_wheel_hinge">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_right_wheel">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <joint name="JetBot__camera_joint" type="fixed">
-    <parent link="JetBot__chassis"/>
-    <child link="JetBot__camera_link"/>
-    <origin rpy="0    0.25  0" xyz="0.055   0      0.0857"/>
-    <axis xyz="0.96891  0       0.2474"/>
+ <!-- Create a dummy link as base link -->
+  <link name='base_link'>
+    <pose>0 0 0 0 0 0</pose>
+  </link>
+  <joint type="fixed" name="base_link_to_chassis">
+    <child link="JetBot__chassis"/>
+    <parent link="base_link"/>
   </joint>
 
   <link name="JetBot__chassis">
@@ -63,6 +31,50 @@
       </geometry>
     </visual>
   </link>
+  
+  <joint name="JetBot__left_wheel_hinge" type="continuous">
+    <parent link="base_link"/>
+    <child link="JetBot__left_wheel"/>
+    <origin rpy="0       0       1.57079" xyz="0.03     0.05125  0.03"/>
+    <axis xyz="1  0  0" rpy="0 0 0"/>
+  </joint>
+
+  <transmission name="tran_jetbot_left_wheel_hinge">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="JetBot__left_wheel_hinge">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_left_wheel">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <joint name="JetBot__right_wheel_hinge" type="continuous">
+    <parent link="base_link"/>
+    <child link="JetBot__right_wheel"/>
+    <origin rpy="0       0       1.57079" xyz="0.03   -0.0595  0.03"/>
+    <axis xyz="1  0  0" rpy="0 0 0"/>
+  </joint>
+
+  <transmission name="tran_jetbot_right_wheel_hinge">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="JetBot__right_wheel_hinge">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_right_wheel">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <joint name="JetBot__camera_joint" type="fixed">
+    <parent link="JetBot__chassis"/>
+    <child link="JetBot__camera_link"/>
+    <origin rpy="0    0.25  0" xyz="0.055   0      0.0857"/>
+    <axis xyz="0.96891  0       0.2474"/>
+  </joint>
+
+
 
   <link name="JetBot__left_wheel">
     <inertial>
