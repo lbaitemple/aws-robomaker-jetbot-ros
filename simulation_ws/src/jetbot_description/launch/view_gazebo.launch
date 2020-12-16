@@ -7,9 +7,9 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="model" default="$(find jetbot_description)/urdf/jetbot.urdf"/>
-  <arg name="x" default="2.75"/>
-  <arg name="y" default="-14"/>
-  <arg name="z" default="0"/>
+  <arg name="x" default="-5"/>
+  <arg name="y" default="-15"/>
+  <arg name="z" default="0.1"/>
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find aws_robomaker_racetrack_world)/launch/view_racetrack.launch"></include>
