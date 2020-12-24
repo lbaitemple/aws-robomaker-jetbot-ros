@@ -81,6 +81,9 @@ aws iot describe-endpoint
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
+     $ cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
+     $ chmod +x *
+     
     # Make sure you are in the jetbot directory
     $ cd ~/environment/jetbot
     
