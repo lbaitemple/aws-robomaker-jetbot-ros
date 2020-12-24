@@ -265,6 +265,10 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 
 1. Click Create to create the deployment job.
 
+On Robot terminal:
+```
+sudo usermod -G i2c ggc_user
+```
 ------
 
 Keep track of the progress of the deployment, when copying and extracting completes, the status will change to **Launching**.  
