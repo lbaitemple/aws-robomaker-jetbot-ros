@@ -5,5 +5,3 @@
 # Use "deploymentScripts/pre_launch_file.sh" as the preLaunchFile path.
 
 echo Jet Bot, pre-launch
-echo $PYTHONPATH
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/dist-packages

@@ -5,8 +5,11 @@
   <param name="robot_name" value="$(optenv ROBOT_NAME joystick1)" />
   <param name="motor_controller" value="$(optenv MOTOR_CONTROLLER adafruit)" />
   
+  <param name="i2c_bus" type="int" value="$(optenv I2C_BUS 1)" />
+  <param name="max_pwm" type="double" value="$(optenv MAX_PWM 115.0)" />
+  <param name="speed" type="double" value="$(optenv SPEED 0.10)" />
   
-  <node name="move" pkg="jetbot_app" type="move" output="log"/>
-  <node name="teleop" pkg="jetbot_app" type="teleop" output="log" />
+  <node name="move" pkg="jetbot_app" type="move.py" output="screen" />
+  <node name="teleop" pkg="jetbot_app" type="teleop.py" output="screen" />
   
 </launch>
