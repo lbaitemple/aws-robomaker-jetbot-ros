@@ -253,8 +253,11 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 1. Environment variables, type in an environment Name and Value. Environment variable names must start with A-Z or underscore and consist of A-Z, 0-9 and underscore. Names beginning with “AWS” are reserved.
 
     - Add the following environment variables:
+        - **Key** = `IOT_ENDPOINT` (key must be in all caps exactly) Value = <your IoT endpointAddress> (this is the IOT_ENDPOINT you captured from earlier step in roboMakerSettings.json file)
+        - **Key** = `ROBOT_NAME`(key must be in all caps exactly) Value = `joystick1`(do not change the value)
         - **Key** = `MOTOR_CONTROLLER`(key must be in all caps exactly as MOTOR_CONTROLLER) **Value** = `qwiic`
-                      
+ 
+
 1. Specify a Robot deployment timeout. Deployment to an individual robot will stop if it does not complete before the amount of time specified.
 
 1. Click Create to create the deployment job.
