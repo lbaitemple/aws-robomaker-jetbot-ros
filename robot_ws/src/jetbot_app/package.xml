@@ -18,4 +18,5 @@
   <depend>adafruit-ssd1306-pip</depend>
   <depend>sparkfun-qwiic-scmd-pip</depend>
   <depend>smbus</depend>
+  <depend>pyyaml</depend>
 </package>
