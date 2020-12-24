@@ -22,6 +22,9 @@ CERTIFICATEFILE = 'certificate.pem.crt'
 #ROS Settings, for example application name
 ROSAPP = 'jetbot_app'
 CMD_VEL_TOPIC = '/move/cmd_vel'
+TOPIC = os.environ['ROBOT_NAME'].lower()
+CLIENTID = os.environ['ROBOT_NAME'].lower()
+ENDPOINT = os.environ['IOT_ENDPOINT'].lower()
 
 def setup_logging(loglevel = LOGLEVEL, logname = LOGNAME):
     """
