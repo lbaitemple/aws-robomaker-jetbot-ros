@@ -271,6 +271,11 @@ sudo usermod -G i2c ggc_user
 ```
 ------
 
+check file logs at
+```
+more /greengrass/ggc/var/log/system/runtime.log
+```
+
 Keep track of the progress of the deployment, when copying and extracting completes, the status will change to **Launching**.  
 
 **Congratulations, you can now control your robot with the virtual joystick!**
