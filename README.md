@@ -274,6 +274,11 @@ sudo usermod -G i2c ggc_user
 check file logs at
 ```
 more /greengrass/ggc/var/log/system/runtime.log
+more /home/ggc_user/roboMakerDeploymentPackage/log/rosout.log
+```
+or
+```
+cd /home/ggc_user/roboMakerDeploymentPackage/log
 ```
 
 Keep track of the progress of the deployment, when copying and extracting completes, the status will change to **Launching**.  
