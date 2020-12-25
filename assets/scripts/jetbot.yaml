@@ -5,6 +5,13 @@ adafruit-motorhat-pip:
   ubuntu:
     pip:
       packages: [Adafruit-MotorHAT]
+yaml-pip:
+  debian:
+    pip:
+      packages: [PyYAML]
+  ubuntu:
+    pip:
+      packages: [PyYAML]
 adafruit-ssd1306-pip:
   debian:
     pip:
