@@ -19,4 +19,5 @@
   <depend>sparkfun-qwiic-scmd-pip</depend>
   <depend>smbus</depend>
   <depend>yaml</depend>
+  <depend>python-yaml</depend>
 </package>
