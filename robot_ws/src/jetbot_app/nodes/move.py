@@ -1,9 +1,13 @@
 #!/usr/bin/env python2
-import rospy
-import time
+
+# python imports
+import logging
 import json
 import os
-import logging
+import time
+# ros imports
+import rospy
+import rospkg
 
 #Set the verbosity of logs and the logger name
 LOGLEVEL = logging.DEBUG 
@@ -47,6 +51,8 @@ class Move():
 			self.motor_right = self.motor_driver.getMotor(self.motor_right_ID)
 			self.all_stop()
 		elif MOTOR_CONTROLLER == 'qwiic':
+			self.motor_left_ID = 1
+			self.motor_right_ID = 2
 			self.motor_driver = qwiic_scmd.QwiicScmd()
 			self.motor_driver.disable()
 
@@ -54,16 +60,22 @@ class Move():
 		max_pwm = float(rospy.get_param("max_pwm"))
 		speed = int(min(max(abs(value * max_pwm), 0), max_pwm))
 		
-		if motor_ID == 1:
-			motor = self.motor_left
-		elif motor_ID == 2:
-			motor = self.motor_right
-		else:
-			rospy.logerror('set_speed(%d, %f) -> invalid motor_ID=%d', motor_ID, value, motor_ID)
-			return
 		
 		if MOTOR_CONTROLLER == 'adafruit':
+			if motor_ID == 1:
+				motor = self.motor_left
+			elif motor_ID == 2:
+				motor = self.motor_right
+			else:
+				rospy.logerror('set_speed(%d, %f) -> invalid motor_ID=%d', motor_ID, value, motor_ID)
+				return
+			
 			motor.setSpeed(speed)
+			if value > 0:
+				motor.run(Adafruit_MotorHAT.FORWARD)
+			else:
+				motor.run(Adafruit_MotorHAT.BACKWARD)
+
 		elif MOTOR_CONTROLLER== 'qwiic':
 			if (speed>0):
 				dir = 1
@@ -73,18 +85,18 @@ class Move():
 			self.motor_driver.set_drive(motor_ID, dir, abs(speed))
 			self.motor_driver.enable()
 	
-		if value > 0:
-			motor.run(Adafruit_MotorHAT.FORWARD)
-		else:
-			motor.run(Adafruit_MotorHAT.BACKWARD)
 	
 	def start(self):
 		logger.info("Subsribing to topic %s", "move")
+		rospy.loginfo("Subsribing to topic %s", "move")
 #		rospy.Subscriber('~cmd_dir', String, self.on_cmd_dir)
 		rospy.Subscriber('/move/cmd_vel', Twist, self.on_cmd_vel)
 #		rospy.Subscriber('~cmd_raw', String, self.on_cmd_raw)
 #		rospy.Subscriber('~cmd_str', String, self.on_cmd_str)
 		rospy.spin()
+#		while True:
+#s			time.sleep(5)
+#		return
 	
 	# stops all motors
 	def all_stop(self):
@@ -124,19 +136,19 @@ class Move():
 	    y = msg.angular.z/10
 		 
 	    if x>0 and y<0: #backward right
-	    	rospy.loginfo(rospy.get_caller_id() + ', backward right (left, right)=(%s,%s)' % ((abs(y)+0.1), (0.2+y+0.1)))
+#	    	rospy.loginfo(rospy.get_caller_id() + ', backward right (left, right)=(%s,%s)' % ((abs(y)+0.1), (0.2+y+0.1)))
 	    	self.set_speed(self.motor_left_ID, (abs(y)+0.1))
 	    	self.set_speed(self.motor_right_ID, (0.2+y+0.1))
 	    elif x>0 and y>0: #backward left
-	    	rospy.loginfo(rospy.get_caller_id() + ', backward left (left, right)=(%s,%s)' % ((0.2-y+0.1), (y+0.1)))
+#	    	rospy.loginfo(rospy.get_caller_id() + ', backward left (left, right)=(%s,%s)' % ((0.2-y+0.1), (y+0.1)))
 	    	self.set_speed(self.motor_left_ID, (0.2-y+0.1))
 	    	self.set_speed(self.motor_right_ID, (y+0.1))
 	    elif x<0 and y>0: #forward left
-	    	rospy.loginfo(rospy.get_caller_id() + ', forward left (left, right)=(%s,%s)' % ((-(0.2-y)-0.1), -(y+0.1)))
+#	    	rospy.loginfo(rospy.get_caller_id() + ', forward left (left, right)=(%s,%s)' % ((-(0.2-y)-0.1), -(y+0.1)))
 	    	self.set_speed(self.motor_left_ID, (-(0.2-y)-0.1))
 	    	self.set_speed(self.motor_right_ID, -(y+0.1))
 	    elif x<0 and y<0: #forward right
-	    	rospy.loginfo(rospy.get_caller_id() + ', forward right (left, right)=(%s,%s)' % (y-0.1, (-(0.2+y)-0.1)))
+#	    	rospy.loginfo(rospy.get_caller_id() + ', forward right (left, right)=(%s,%s)' % (y-0.1, (-(0.2+y)-0.1)))
 	    	self.set_speed(self.motor_left_ID, y-0.1)
 	    	self.set_speed(self.motor_right_ID, (-(0.2+y)-0.1))
 	    else:
@@ -157,9 +169,9 @@ class Move():
 def main():
 	logger.info('jetbot_sim_app Move Node starting...')
 	rospy.init_node('move')
+	move = Move()
 	
 	try:
-		move = Move()
 		move.start()
 	except rospy.ROSInterruptException:
 		pass
