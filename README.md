@@ -274,6 +274,7 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 On Robot terminal:
 ```
 sudo usermod -G i2c ggc_user
+sudo chmod 0666 /dev/i2c-1
 ```
 ------
 
