@@ -34,7 +34,7 @@ def setup_logging(loglevel = LOGLEVEL, logname = LOGNAME):
 if MOTOR_CONTROLLER== 'adafruit':
     from Adafruit_MotorHAT import Adafruit_MotorHAT
 elif MOTOR_CONTROLLER == 'qwiic':
-    import qwiic_scmd
+    from qwiic_scmd import *
 else:
     raise ImportError
 from std_msgs.msg import String
@@ -42,19 +42,28 @@ from geometry_msgs.msg import Twist
 
 class Move():
 	def __init__(self):
+		#logger.info("init move")
 		# setup motor controller
+		self.motor_left_ID = 1
+		self.motor_right_ID = 2
 		if MOTOR_CONTROLLER == 'adafruit':
 			self.motor_driver = Adafruit_MotorHAT(i2c_bus=int(rospy.get_param("i2c_bus")))
-			self.motor_left_ID = 1
-			self.motor_right_ID = 2
+#			self.motor_left_ID = 1
+#			self.motor_right_ID = 2
 			self.motor_left = self.motor_driver.getMotor(self.motor_left_ID)
 			self.motor_right = self.motor_driver.getMotor(self.motor_right_ID)
 			self.all_stop()
 		elif MOTOR_CONTROLLER == 'qwiic':
-			self.motor_left_ID = 1
-			self.motor_right_ID = 2
-			self.motor_driver = qwiic_scmd.QwiicScmd()
-			self.motor_driver.disable()
+			logger.info("init move - qwiic")
+			self.motor_driver = QwiicScmd()
+			logger.info("init move - qwiic send commd")
+			if self.motor_driver.connected == False:
+				logger.info("init move -  conneectedd")
+			else:
+				logger.info("init move - conneectedd")
+
+#			self.motor_driver.disable()
+#			logger.info("init move - qwiic send disable")
 
 	def set_speed(self, motor_ID, value):
 		max_pwm = float(rospy.get_param("max_pwm"))
@@ -81,6 +90,7 @@ class Move():
 				dir = 1
 			else:
 				dir = -1
+			logger.info("Subsribing to spped value %f", abs(speed))
 			self.motor_driver.set_drive(motor_ID, dir, abs(speed))
 			self.motor_driver.set_drive(motor_ID, dir, abs(speed))
 			self.motor_driver.enable()
@@ -88,14 +98,16 @@ class Move():
 	
 	def start(self):
 		logger.info("Subsribing to topic %s", "move")
-		rospy.loginfo("Subsribing to topic %s", "move")
+		# rospy.loginfo("Subsribing to topic %s", "move")
 #		rospy.Subscriber('~cmd_dir', String, self.on_cmd_dir)
+	
 		rospy.Subscriber('/move/cmd_vel', Twist, self.on_cmd_vel)
+		logger.info("Donee Subsribing to topic %s", "move")
 #		rospy.Subscriber('~cmd_raw', String, self.on_cmd_raw)
 #		rospy.Subscriber('~cmd_str', String, self.on_cmd_str)
 		rospy.spin()
 #		while True:
-#s			time.sleep(5)
+#			time.sleep(5)
 #		return
 	
 	# stops all motors
@@ -134,7 +146,9 @@ class Move():
 	def on_cmd_vel(self, msg):
 	    x = msg.linear.x
 	    y = msg.angular.z/10
-		 
+	    
+	    logger.info('Received from message: %s', msg.linear) 
+	    
 	    if x>0 and y<0: #backward right
 #	    	rospy.loginfo(rospy.get_caller_id() + ', backward right (left, right)=(%s,%s)' % ((abs(y)+0.1), (0.2+y+0.1)))
 	    	self.set_speed(self.motor_left_ID, (abs(y)+0.1))
@@ -182,4 +196,5 @@ def main():
 # initialization
 if __name__ == '__main__':
 	logger = setup_logging()
+	logger.info("before movee main ")
 	main()
