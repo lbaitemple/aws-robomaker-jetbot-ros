@@ -13,9 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
 )
-find_package(Qt4 REQUIRED)
-include(${QT_USE_FILE})
-add_definitions(${QT_DEFINITIONS})
+#find_package(Qt4 REQUIRED)
+#include(${QT_USE_FILE})
+#add_definitions(${QT_DEFINITIONS})
 
 ################################################################################
 # Setup for python modules and scripts
@@ -54,8 +54,6 @@ include_directories(/usr/include/gstreamer-1.0 /usr/include/glib-2.0 /usr/includ
 ################################################################################
 # Add your custom nodes here. 
 catkin_install_python(PROGRAMS 
-  nodes/circle.py
-  nodes/move.py
   nodes/teleop.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
