@@ -100,7 +100,7 @@ sudo ./reset_cred.sh
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
 
-    (docker)$ ./assets/scripts/compile_arm64.sh 
+    (docker)$ ./assets/scripts/compile_armhf.sh 
 
     # Wait until shell script is completed 
     #Type exit or Ctrl-D, to exit the container
