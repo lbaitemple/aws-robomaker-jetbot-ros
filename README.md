@@ -14,7 +14,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     # change to the environment directory
     cd ~/environment
-    git clone https://github.com/lbaitemple/aws-robomaker-jetbot-ros
+    git clone -b raspberry https://github.com/lbaitemple/aws-robomaker-jetbot-ros
     mv aws-robomaker-jetbot-ros jetbot
     ```
 
@@ -26,7 +26,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     # Run install_dep.sh to install prerequisite
     $ cd ~/environment/jetbot/assets/scripts
     
-    $ chmod +x compile_arm64.sh install_deps.sh 
+    $ chmod +x compile_armhf.sh install_deps.sh 
     
     $ sudo ./install_deps.sh
     
