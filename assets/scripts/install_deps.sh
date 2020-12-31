@@ -63,8 +63,9 @@ $(aws ecr get-login --no-include-email --registry-ids 593875212637 --region us-e
 apt update &&  apt install -y qemu-user-static
 
 #Build Docker Container
-docker build -t jetbot-ros -f Dockerfile .
-
+#docker build -t jetbot-ros -f Dockerfile .
+cd /opt/robomaker/cross-compilation-dockerfile/
+sudo bin/build_image.bash
 #fix ros permissions
 rosdep fix-permissions
 sudo -u ubuntu rosdep update
