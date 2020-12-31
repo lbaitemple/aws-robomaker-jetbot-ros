@@ -95,7 +95,7 @@ sudo ./reset_cred.sh
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
-    $ sudo docker run --rm -ti -v $(pwd):/environment/jetbot jetbot-ros
+    $sudo docker run -v $(pwd):/ws -it ros-cross-compile:armhf
 
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
