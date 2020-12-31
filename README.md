@@ -14,8 +14,8 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     # change to the environment directory
     cd ~/environment
-    git clone -b raspberry https://github.com/lbaitemple/aws-robomaker-jetbot-ros
-    mv aws-robomaker-jetbot-ros jetbot
+    git clone -b raspberrypi https://github.com/lbaitemple/aws-robomaker-jetbot-ros
+    mv aws-robomaker-jetbot-ros rpi
     ```
 
 ### Install Dependencies [~15 mins]
@@ -24,7 +24,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 1. In the terminal window, change to the `jetbot/assets` directory 
     ```
     # Run install_dep.sh to install prerequisite
-    $ cd ~/environment/jetbot/assets/scripts
+    $ cd ~/environment/rpi/assets/scripts
     
     $ chmod +x compile_armhf.sh install_deps.sh 
     
@@ -42,7 +42,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 ### install
 
 ```
-cd  ~/environment/jetbot/simulation_ws
+cd  ~/environment/rpi/simulation_ws
 rosws update
 rosdep  install --from-paths src --ignore-src -r -y
 colcon build
@@ -68,7 +68,7 @@ aws iot describe-endpoint
 1. Zip the teleop client app
     ```
     # Make sure you are in the jetbot directory
-    $ cd ~/environment/jetbot
+    $ cd ~/environment/rpi
     $ zip teleop.zip assets/teleop/*
     ```
 1. Download the zip file in the file explorer and unzip it on the desktop
@@ -91,7 +91,7 @@ sudo ./reset_cred.sh
      $ chmod +x *
      
     # Make sure you are in the jetbot directory
-    $ cd ~/environment/jetbot
+    $ cd ~/environment/rpi
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
