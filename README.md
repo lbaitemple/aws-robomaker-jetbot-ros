@@ -76,18 +76,18 @@ aws iot describe-endpoint
 1. Use your mouse to move the joy stick and watch the Jetbot move in the Gazebo window
 1. Stop the simulation
 
-### Build, Bundle and Deploy Robot Application in ARM64 Architecture [~15 mins]
+### Build, Bundle and Deploy Robot Application in ARMHF Architecture [~15 mins]
 1. Open the RoboMaker IDE and navigate to the terminal
 
 1. need to reset the **jetbot** credential if you have not used green grass for sometimee
 ```
-cd ~/environment/jetbot/assets/scripts
+cd ~/environment/rpi/assets/scripts
 sudo ./reset_cred.sh
 ```
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
-     $ cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
+     $ cd ~/environment/rpi/robot_ws/src/jetbot_app/nodes
      $ chmod +x *
      
     # Make sure you are in the jetbot directory
@@ -111,7 +111,7 @@ sudo ./reset_cred.sh
     ```
     # Make sure you exited out of the container in previous step
     # Copy the robot application to S3
-    $ aws s3 cp ./robot_ws/arm64_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/aarch64/output.tar
+    $ aws s3 cp ./robot_ws/armhf_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/armhf/output.tar
     ```
 
 ## Deploying with RoboMaker
