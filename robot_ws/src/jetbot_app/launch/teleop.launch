@@ -10,7 +10,6 @@
   <param name="speed" type="double" value="$(optenv SPEED 0.10)" />
   
   <node name="teleop" pkg="jetbot_app" type="teleop.py" output="screen" />
-  <node name="move" pkg="jetbot_app" type="move.py" output="screen" />
 
   
 </launch>
