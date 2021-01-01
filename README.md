@@ -278,6 +278,12 @@ On Robot terminal:
 sudo usermod -G i2c ggc_user
 sudo chmod 0666 /dev/i2c-1
 ```
+# Rerun the ros
+```
+cd /greengrass/ggc/core/
+sudo ./greengrassd start
+```
+
 ------
 
 check file logs at
