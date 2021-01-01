@@ -13,9 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
 )
-#find_package(Qt4 REQUIRED)
-#include(${QT_USE_FILE})
-#add_definitions(${QT_DEFINITIONS})
+find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
+add_definitions(${QT_DEFINITIONS})
 
 ################################################################################
 # Setup for python modules and scripts
