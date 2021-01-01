@@ -284,6 +284,11 @@ cd /greengrass/ggc/core/
 sudo ./greengrassd start
 ```
 
+then wait for 1 minute or 2 minutes, you can do
+```
+rostopic list
+```
+
 ------
 
 check file logs at
