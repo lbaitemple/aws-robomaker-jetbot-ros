@@ -275,6 +275,13 @@ On Robot terminal:
 ```
 sudo usermod -G i2c ggc_user
 sudo chmod 0666 /dev/i2c-1
+wget https://raw.githubusercontent.com/lbaitemple/aws-robomaker-jetbot-ros/master/assets/scripts/startros.sh
+chmod +x startros.sh
+```
+You can restart the Jetbot by typing
+```
+cd ~
+./startros.sh
 ```
 ------
 
