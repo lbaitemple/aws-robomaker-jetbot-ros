@@ -25,7 +25,7 @@
       "cfg": {
           "simulationApp": {
             "name": "jetbotCircleSimulation",
-            "sourceBundleFile": "./jetbot/simulation_ws/bundle/output.tar",
+            "sourceBundleFile": "./rpi/simulation_ws/bundle/output.tar",
             "architecture": "X86_64",
             "s3Bucket": "<S3 Bucketname for bundle ie. my-s3-bucketname>",
             "launchConfig": {
