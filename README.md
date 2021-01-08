@@ -24,17 +24,17 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 1. In the terminal window, change to the `jetbot/assets` directory 
     ```
     # Run install_dep.sh to install prerequisite
-    $ cd ~/environment/rpi/assets/scripts
+    cd ~/environment/rpi/assets/scripts
     
-    $ chmod +x *.sh 
+    chmod +x *.sh 
     
-    $ sudo ./install_deps.sh
+    sudo ./install_deps.sh
     
     ```
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
     #  Make sure previous step is complete first
-    $ rosdep update
+    rosdep update
     
     ```
 ### Run in Simulation and Explore [~30 mins]
