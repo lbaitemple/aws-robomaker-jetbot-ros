@@ -9,9 +9,9 @@ IOTPOLICYNAME="JetBotPolicy"
 #Configure IoT
 #Create endpoint
 
-endpoint=`aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep \" | cut -d \" -f4 c`
+endpoint=`aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep \" | cut -d \" -f4 `
 echo $endpoint > $ROBOT_CERTS_FOLDER/endpoint
-echo $endpoint > $IM_CERTS_FOLDER/endpoint
+echo $endpoint > $SIM_CERTS_FOLDER/endpoint
 
 #Create IoT Policy
 #aws iot create-policy \
