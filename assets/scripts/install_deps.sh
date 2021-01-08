@@ -65,6 +65,7 @@ apt update &&  apt install -y qemu-user-static
 #Build Docker Container
 #docker build -t jetbot-ros -f Dockerfile .
 cd /opt/robomaker/cross-compilation-dockerfile/
+sudo rm /opt/robomaker/cross-compilation-dockerfile/qemu/download/qemu*.tar.xz*
 sudo bin/build_image.bash
 #fix ros permissions
 rosdep fix-permissions
