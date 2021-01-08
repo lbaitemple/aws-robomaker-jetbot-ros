@@ -1,7 +1,11 @@
 WORK_DIR=$(pwd)
 ROBOT_CERTS_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/config
+ROBOT_SRC_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/src/jetbot_app
+
 [ ! -d "$ROBOT_CERTS_FOLDER" ] && mkdir -p $ROBOT_CERTS_FOLDER
 SIM_CERTS_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/config
+SIM_SRC_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/src/jetbot_sim_app
+
 [ ! -d "$SIM_CERTS_FOLDER" ] && mkdir -p $SIM_CERTS_FOLDER
 IOTPOLICY="file://../policies/iotpolicy.json"
 IOTPOLICYNAME="JetBotPolicy"
@@ -9,11 +13,11 @@ IOTPOLICYNAME="JetBotPolicy"
 #Configure IoT
 #Create endpoint
 
-endpoint=`aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep \" | cut -d \" -f4 `
-echo $endpoint > $ROBOT_CERTS_FOLDER/endpoint
-echo $endpoint > $SIM_CERTS_FOLDER/endpoint
+endpoint=`aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep \" | cut -d \" -f4`
+echo ENDPOINT=\"$endpoint\" > $ROBOT_SRC_FOLDER/endpoint.py
+echo ENDPOINT=\"$endpoint\" > $SIM_SRC_FOLDER/endpoint.py
 
-#Create IoT Policy
+#Create IoT Policy.
 #aws iot create-policy \
 #--policy-name $IOTPOLICYNAME \
 #--policy-document $IOTPOLICY
