@@ -114,7 +114,7 @@ sudo ./reset_cred.sh
     # Make sure you exited out of the container in previous step
     # Copy the robot application to S3
     $ cd ~/environment/rpi/
-    $ aws s3 cp ./robot_ws/armhf_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/armhf/output.tar
+    $ aws s3 cp ./robot_ws/armhf_bundle/output.tar s3://<S3-BUCKET-NAME>/rpi/armhf/output.tar
     ```
 
 ## Deploying with RoboMaker
