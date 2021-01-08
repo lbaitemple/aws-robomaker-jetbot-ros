@@ -5,7 +5,7 @@
       "name": "JetBot Simulation",
       "type": "colcon build",
       "cfg": {
-        "workingDir": "./jetbot/simulation_ws",
+        "workingDir": "./rpi/simulation_ws",
         "cmdArgs": ""
       }
     },
@@ -14,7 +14,7 @@
       "name": "JetBot Simulation",
       "type": "colcon bundle",
       "cfg": {
-        "workingDir": "./jetbot/simulation_ws",
+        "workingDir": "./rpi/simulation_ws",
         "cmdArgs": ""
       }
     },
@@ -62,7 +62,7 @@
       "cfg": {
           "simulationApp": {
             "name": "jetbotTeleopSimulation",
-            "sourceBundleFile": "./jetbot/simulation_ws/bundle/output.tar",
+            "sourceBundleFile": "./rpi/simulation_ws/bundle/output.tar",
             "architecture": "X86_64",
             "s3Bucket": "<S3 Bucketname for bundle ie. my-s3-bucketname>",
             "launchConfig": {
