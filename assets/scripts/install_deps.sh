@@ -60,7 +60,7 @@ echo "yaml file:///$WORK_DIR/jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-cu
 $(aws ecr get-login --no-include-email --registry-ids 593875212637 --region us-east-1)
 
 #Install Ubuntu dependencies for cross compilation:
-apt update &&  apt install -y qemu-user-static
+apt update &&  apt install -y qemu-user-static  apt-utils 
 
 #Build Docker Container
 #docker build -t jetbot-ros -f Dockerfile .
