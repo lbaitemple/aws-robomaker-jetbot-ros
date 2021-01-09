@@ -2,6 +2,8 @@ WORK_DIR=$(pwd)
 ROBOT_CERTS_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/config
 ROBOT_SRC_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/src/jetbot_app
 
+TELEOP_CRED=$WORK_DIR/../teleop/aws-configuration.js 
+
 [ ! -d "$ROBOT_CERTS_FOLDER" ] && mkdir -p $ROBOT_CERTS_FOLDER
 SIM_CERTS_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/config
 SIM_SRC_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/src/jetbot_sim_app
@@ -16,6 +18,9 @@ IOTPOLICYNAME="JetBotPolicy"
 endpoint=`aws iot describe-endpoint --endpoint-type iot:Data-ATS | grep \" | cut -d \" -f4`
 echo ENDPOINT=\"$endpoint\" > $ROBOT_SRC_FOLDER/endpoint.py
 echo ENDPOINT=\"$endpoint\" > $SIM_SRC_FOLDER/endpoint.py
+
+#sed  s"/host: "",/host: \"$endpoint\",/" $TELEOP_CRED > $TELEOP_CRED
+sed -i s"/host: \"\"/host: \"$endpoint\"/" $TELEOP_CRED
 
 #Create IoT Policy.
 #aws iot create-policy \
