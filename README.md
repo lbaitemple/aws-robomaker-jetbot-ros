@@ -194,17 +194,14 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 1. Unzip your device certificates to the robot (raspberry pi):
 
     ```
-    # Copy the local security resources to the robot
+    # Copy the local security resources to the robot (or use jupter lab)
     (from PC)$ scp /path/to/downladed-zip/<robot-certs>.zip jetbot@<ip-addres>:/home/jetbot/robomaker-robot-certs.zip
 
-    # SSH to the robot
-    (pi)$ ssh jetbot@<ip-address>
-
     # Switch to the root user
-    (pi)$ sudo su -s /bin/bash
+    (pi)$ cd ~
 
     # Unzip the jetbot security credentials to greengrass certificate store
-    (pi)$ unzip /home/jetbot/<greengrass-certs>.zip -d /greengrass
+    (pi)$ sudo unzip /home/jetbot/<greengrass-certs>.zip -d /greengrass
     
     # update the CA certificate used by RoboMaker <no need>
     # (pi)$ cd /greengrass/certs/
