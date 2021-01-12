@@ -14,7 +14,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     # change to the environment directory
     cd ~/environment
-    git clone -b raspberrypi https://github.com/lbaitemple/aws-robomaker-jetbot-ros
+    git clone -b raspberrypiv2 https://github.com/lbaitemple/aws-robomaker-jetbot-ros
     mv aws-robomaker-jetbot-ros rpi
     ```
 
@@ -49,10 +49,10 @@ colcon build
 colcon bundle
 ```
 
-To find IoT endpoint, you can use
-```
-aws iot describe-endpoint
-```
+#### To find IoT endpoint, you can use <no need>
+### ```
+### aws iot describe-endpoint
+###```
 1. Open the roboMakerSetting.json file in the **jetbot** directory and input S3 bucket, IAM role, MQTT endpoint and VPC public subnet ids and security group ids.
 
 1. Click Run, Add or Edit Configurations, select the roboMakerSettings.json file from jetbot directory
@@ -191,34 +191,29 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 1. Locate the IP address of robot on the OLED
 ![Sparkfun Jetbot OLED display](https://cdn.shopify.com/s/files/1/0915/1182/products/14532-SparkFun_Micro_OLED_Breakout__Qwiic_-01_300x.jpg)
 
-1. Unzip your device certificates to the robot:
+1. Unzip your device certificates to the robot (raspberry pi):
 
     ```
     # Copy the local security resources to the robot
-    $ scp /path/to/downladed-zip/<robot-certs>.zip jetbot@<ip-addres>:/home/jetbot/robomaker-robot-certs.zip
+    (from PC)$ scp /path/to/downladed-zip/<robot-certs>.zip jetbot@<ip-addres>:/home/jetbot/robomaker-robot-certs.zip
 
     # SSH to the robot
-    $ ssh jetbot@<ip-address>
+    (pi)$ ssh jetbot@<ip-address>
 
     # Switch to the root user
-    $ sudo su -s /bin/bash
+    (pi)$ sudo su -s /bin/bash
 
     # Unzip the jetbot security credentials to greengrass certificate store
-    $ unzip /home/jetbot/<greengrass-certs>.zip -d /greengrass
+    (pi)$ unzip /home/jetbot/<greengrass-certs>.zip -d /greengrass
     
-    # update the CA certificate used by RoboMaker
-    $ cd /greengrass/certs/
-    $ wget -O root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
+    # update the CA certificate used by RoboMaker <no need>
+    # (pi)$ cd /greengrass/certs/
+    # (pi)$sudo wget -O /greengrass/certs/root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
     
     # start greengrass core
-    $ sudo /greengrass/ggc/core/greengrassd start
+    (pi)$ sudo /greengrass/ggc/core/greengrassd start
     
-    # Exit the root shell
-    $ exit # or Ctrl-d
-
-    # Terminate the ssh connection
-    $ exit # or Ctrl-d
-    ```
+     ```
 
 ### Create a Fleet
 1. Sign in to the AWS RoboMaker
@@ -276,31 +271,31 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 
 On Robot terminal:
 ```
-sudo usermod -G i2c ggc_user
-sudo chmod 0666 /dev/i2c-1
+(pi)$ sudo usermod -G i2c ggc_user
+(pi)$ sudo chmod 0666 /dev/i2c-1
 ```
-# Rerun the ros
+# Re(pi)$ run the ros
 ```
-cd /greengrass/ggc/core/
-sudo ./greengrassd start
+(pi)$ cd /greengrass/ggc/core/
+(pi)$ sudo ./greengrassd start
 ```
 
 then wait for 1 minute or 2 minutes, you can do
 ```
-rostopic list
+(pi)$ rostopic list
 ```
 
 ------
 
 check file logs at
 ```
-more /greengrass/ggc/var/log/system/runtime.log
-more /home/ggc_user/roboMakerDeploymentPackage/log/rosout.log
+(pi)$ more /greengrass/ggc/var/log/system/runtime.log
+(pi)$ more /home/ggc_user/roboMakerDeploymentPackage/log/rosout.log
 ```
 or
 ```
-cd /home/ggc_user/roboMakerDeploymentPackage/log
-cd /home/ggc_user/ros/home/deployment-xxxxx/log/
+(pi)$ cd /home/ggc_user/roboMakerDeploymentPackage/log
+(pi)$ cd /home/ggc_user/ros/home/deployment-xxxxx/log/
 ```
 
 
