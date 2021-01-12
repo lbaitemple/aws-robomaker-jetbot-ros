@@ -205,11 +205,7 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
     Type 'A' when prompted.
     
     ```
-    # update the CA certificate used by RoboMaker <no need>
-    # (pi)$ cd /greengrass/certs/
-    # (pi)$sudo wget -O /greengrass/certs/root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
-    
-    # start greengrass core
+     # start greengrass core
     (pi)$ sudo /greengrass/ggc/core/greengrassd start
     
      ```
