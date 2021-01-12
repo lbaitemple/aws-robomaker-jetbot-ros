@@ -100,8 +100,6 @@ sudo ./reset_cred.sh
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
     (docker)$ cd /environment/rpi
-    (docker)$ echo "yaml file:///environment/rpi/assets/scripts/jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-customdepenencies.list
-    (docker)$ sudo apt install  libqt4-dev  -y
     (docker)$ ./assets/scripts/compile_armhf.sh 
 
     # Wait until shell script is completed 
