@@ -47,7 +47,7 @@
             }
           },
           "simulation": {
-            "maxJobDurationInSeconds": 28800,
+            "maxJobDurationInSeconds": 1800,
             "failureBehavior": "Fail",
             "iamRole": "<IAM Role ARN for Robomake ie. arn:aws:iam::123456789012:role/your-role-name>",
             "outputLocation": "<S3 Bucketname for bundle ie. my-s3-bucketname>",
@@ -86,7 +86,7 @@
             }
           },
           "simulation": {
-            "maxJobDurationInSeconds": 28800,
+            "maxJobDurationInSeconds": 1800,
             "failureBehavior": "Fail",
             "iamRole": "<IAM Role ARN for Robomake ie. arn:aws:iam::123456789012:role/your-role-name>",
             "outputLocation": "<S3 Bucketname for bundle ie. my-s3-bucketname>",
