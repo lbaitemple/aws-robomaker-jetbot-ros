@@ -88,15 +88,15 @@ sudo ./reset_cred.sh
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
-     $ cd ~/environment/rpi/robot_ws/src/jetbot_app/nodes
-     $ chmod +x *
+     cd ~/environment/rpi/robot_ws/src/jetbot_app/nodes
+     chmod +x *
      
     # Make sure you are in the jetbot directory
     $ cd ~/environment/rpi
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
-    $ sudo docker run --rm -ti -v $(pwd):/environment/rpi ros-cross-compile:armhf
+    sudo docker run --rm -ti -v $(pwd):/environment/rpi ros-cross-compile:armhf
 
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
@@ -112,8 +112,8 @@ sudo ./reset_cred.sh
     ```
     # Make sure you exited out of the container in previous step
     # Copy the robot application to S3
-    $ cd ~/environment/rpi/
-    $ aws s3 cp ./robot_ws/armhf_bundle/output.tar s3://<S3-BUCKET-NAME>/rpi/armhf/output.tar
+    cd ~/environment/rpi/
+    aws s3 cp ./robot_ws/armhf_bundle/output.tar s3://<S3-BUCKET-NAME>/rpi/armhf/output.tar
     ```
 
 ## Deploying with RoboMaker
