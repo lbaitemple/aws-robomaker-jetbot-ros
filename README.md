@@ -30,8 +30,17 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     
     sudo ./install_deps.sh
     sudo ./reset_cred.sh
-   
     ```
+    Use the following command to checek if  ros-cross-compile:armhf instancee is installed
+    ```
+    sudo docker image list
+    ```
+    If not, you will need to remove all image by using
+    ```
+    sudo docker rmi -f $(sudo docker images -q)
+    ```
+    After that, you back to the bedginning of the process to rerun install_deps.sh.
+    
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
     #  Make sure previous step is complete first
