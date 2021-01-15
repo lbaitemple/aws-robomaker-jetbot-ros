@@ -213,7 +213,7 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
     $ sudo su -s /bin/bash
 
     # Unzip the jetbot security credentials to greengrass certificate store
-    $ unzip /home/jetbot/<greengrass-certs>.zip -d /greengrass
+    $ unzip ~/robomaker-robot-certs.zip -d /greengrass/
     
     # update the CA certificate used by RoboMaker
     $ cd /greengrass/certs/
