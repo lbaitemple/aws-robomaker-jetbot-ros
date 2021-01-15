@@ -24,12 +24,24 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 1. In the terminal window, change to the `jetbot/assets` directory 
     ```
     # Run install_dep.sh to install prerequisite
-    $ cd ~/environment/jetbot/assets/scripts
+    cd ~/environment/jetbot/assets/scripts
     
-    $ chmod +x compile_arm64.sh install_deps.sh 
+    chmod +x compile_arm64.sh install_deps.sh 
     
-    $ sudo ./install_deps.sh
-    
+    sudo ./install_deps.sh
+    ```
+    Use the following command to checek if  ros-cross-compile:armhf instancee is installed
+    ```
+    sudo docker image list
+    ```
+    If not, you will need to remove all image by using
+    ```
+    sudo docker rmi -f $(sudo docker images -q)
+    ```
+    After that, you back to the bedginning of the process to rerun install_deps.sh.
+
+    ```
+    sudo ./reset_cred.sh
     ```
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
