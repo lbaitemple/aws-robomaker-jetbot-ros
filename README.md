@@ -30,7 +30,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     
     sudo ./install_deps.sh
     ```
-    Use the following command to checek if  ros-cross-compile:armhf instancee is installed
+    Use the following command to checek if  jetbot-ros instance is installed
     ```
     sudo docker image list
     ```
