@@ -26,7 +26,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     # Run install_dep.sh to install prerequisite
     cd ~/environment/jetbot/assets/scripts
     
-    chmod +x compile_arm64.sh install_deps.sh 
+    chmod +x *.sh
     
     sudo ./install_deps.sh
     ```
