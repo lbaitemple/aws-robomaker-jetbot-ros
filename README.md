@@ -80,8 +80,8 @@ aws iot describe-endpoint
 1. Zip the teleop client app
     ```
     # Make sure you are in the jetbot directory
-    $ cd ~/environment/jetbot
-    $ zip teleop.zip assets/teleop/*
+    cd ~/environment/jetbot
+    zip teleop.zip assets/teleop/*
     ```
 1. Download the zip file in the file explorer and unzip it on the desktop
 1. Open the robogui.html file in a browser and make sure the connection status states Connected
@@ -99,15 +99,15 @@ sudo ./reset_cred.sh
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
-     $ cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
-     $ chmod +x *
+     cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
+     chmod +x *
      
     # Make sure you are in the jetbot directory
     $ cd ~/environment/jetbot
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
-    $ docker run --rm -ti -v $(pwd):/environment/jetbot jetbot-ros
+    sudo docker run --rm -ti -v $(pwd):/environment/jetbot jetbot-ros
 
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
@@ -123,7 +123,7 @@ sudo ./reset_cred.sh
     ```
     # Make sure you exited out of the container in previous step
     # Copy the robot application to S3
-    $ aws s3 cp ./robot_ws/arm64_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/aarch64/output.tar
+    aws s3 cp ./robot_ws/arm64_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/aarch64/output.tar
     ```
 
 ## Deploying with RoboMaker
