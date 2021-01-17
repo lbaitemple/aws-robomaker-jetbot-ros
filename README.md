@@ -44,7 +44,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
     #  Make sure previous step is complete first
-    $ rosdep update
+    rosdep update
     
     ```
 ### Run in Simulation and Explore [~30 mins]
