@@ -1,4 +1,4 @@
-echo "yaml file:///environment/jetbot/assets/scripts/jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-customdepenencies.list
+echo "yaml file:/environment/jetbot/assets/scripts/jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-customdepenencies.list
 apt install  libqt4-dev  -y
 apt update
 rosdep fix-permissions && rosdep update 
