@@ -40,9 +40,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     After that, you back to the bedginning of the process to rerun install_deps.sh.
 
-    ```
-    sudo ./reset_cred.sh
-    ```
+    
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
     #  Make sure previous step is complete first
