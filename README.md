@@ -97,11 +97,11 @@ sudo ./reset_cred.sh
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
-     cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
-     chmod +x *
+    cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
+    chmod +x *
      
     # Make sure you are in the jetbot directory
-    $ cd ~/environment/jetbot
+    cd ~/environment/jetbot
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
