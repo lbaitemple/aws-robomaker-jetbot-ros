@@ -11,6 +11,7 @@ apt purge qemu-user qemu-user-static -y
 rm qemu-aarch64-static
 #Install Ubuntu dependencies for cross compilation:
 apt update &&  apt install -y qemu-user qemu-user-static
+cp /usr/bin/qemu-aarch64-static .
 
 #Build Docker Container
 #docker build -t jetbot-ros -f Dockerfile .
