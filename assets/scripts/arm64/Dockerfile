@@ -3,7 +3,7 @@ ARG UBUNTU_VERSION=bionic
 FROM arm64v8/ros:melodic-ros-base-bionic
 
 ENV PATH="/root/.local/bin:${PATH}"
-
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 # Copy qemu from the host machine
 COPY qemu-aarch64-static /usr/bin
 
