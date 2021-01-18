@@ -1,6 +1,6 @@
 WORK_DIR=$(pwd)
 #Add ROS dependencies
-cp -a deps/* /etc/ros/rosdep/sources.list.d/ 
+cp -a ../deps/* /etc/ros/rosdep/sources.list.d/ 
 echo "yaml file:///$WORK_DIR/../jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-customdepenencies.list
 
 # The following command logs in to the an AWS Elastic Container Repository (ECR) to
