@@ -7,7 +7,7 @@ echo "yaml file:///$WORK_DIR/../jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21
 # enable your machine to pull a base docker image
 
 $(aws ecr get-login --no-include-email --registry-ids 593875212637 --region us-east-1)
-apt purge qemu-user qemu-user-static
+apt purge qemu-user qemu-user-static -y
 rm qemu-aarch64-static
 #Install Ubuntu dependencies for cross compilation:
 apt update &&  apt install -y qemu-user qemu-user-static
