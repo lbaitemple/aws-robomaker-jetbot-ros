@@ -201,30 +201,17 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 1. Unzip your device certificates to the robot:
 
     ```
-    # Copy the local security resources to the robot
-    $ scp /path/to/downladed-zip/<robot-certs>.zip jetbot@<ip-addres>:/home/jetbot/robomaker-robot-certs.zip
-
-    # SSH to the robot
-    $ ssh jetbot@<ip-address>
-
-    # Switch to the root user
-    $ sudo su -s /bin/bash
 
     # Unzip the jetbot security credentials to greengrass certificate store
-    $ unzip ~/robomaker-robot-certs.zip -d /greengrass/
+    $ sudo unzip ~/<<robot_cert>>.zip -d /greengrass/
     
     # update the CA certificate used by RoboMaker
     $ cd /greengrass/certs/
-    $ wget -O root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
-    
+    $ sudo wget -O /greengrass/certs/root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
+   
     # start greengrass core
     $ sudo /greengrass/ggc/core/greengrassd start
     
-    # Exit the root shell
-    $ exit # or Ctrl-d
-
-    # Terminate the ssh connection
-    $ exit # or Ctrl-d
     ```
 
 ### Create a Fleet
