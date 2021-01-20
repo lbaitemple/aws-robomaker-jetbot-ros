@@ -36,6 +36,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     If not, you will need to remove all image by using
     ```
+    sudo docker rm $(sudo docker ps -aq) 
     sudo docker rmi -f $(sudo docker images -q)
     ```
     After that, you back to the bedginning of the process to rerun install_deps.sh.
