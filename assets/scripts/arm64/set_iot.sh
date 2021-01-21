@@ -1,17 +1,17 @@
 WORK_DIR=$(pwd)
-ROBOT_CERTS_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/config
-ROBOT_SRC_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/src/jetbot_app
+ROBOT_CERTS_FOLDER=$WORK_DIR/../../../robot_ws/src/jetbot_app/config
+ROBOT_SRC_FOLDER=$WORK_DIR/../../../robot_ws/src/jetbot_app/src/jetbot_app
 
-TELEOP_CRED=$WORK_DIR/../teleop/aws-configuration.js 
+TELEOP_CRED=$WORK_DIR/../../teleop/aws-configuration.js 
 
 [ ! -d "$ROBOT_CERTS_FOLDER" ] && mkdir -p $ROBOT_CERTS_FOLDER
 
-SIM_CERTS_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/config
-SIM_SRC_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/src/jetbot_sim_app
+SIM_CERTS_FOLDER=$WORK_DIR/../../../simulation_ws/src/jetbot_sim_app/config
+SIM_SRC_FOLDER=$WORK_DIR/../../../simulation_ws/src/jetbot_sim_app/src/jetbot_sim_app
 
 [ ! -d "$SIM_CERTS_FOLDER" ] && mkdir -p $SIM_CERTS_FOLDER
 
-IOTPOLICY="file://../policies/iotpolicy.json"
+IOTPOLICY="file://../../policies/iotpolicy.json"
 IOTPOLICYNAME="JetBotPolicy"
 
 #Configure IoT
