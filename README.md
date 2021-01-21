@@ -24,17 +24,33 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
 1. In the terminal window, change to the `jetbot/assets` directory 
     ```
     # Run install_dep.sh to install prerequisite
-    $ cd ~/environment/jetbot/assets/scripts
+    cd ~/environment/jetbot/assets/scripts/arm64
     
-    $ chmod +x compile_arm64.sh install_deps.sh 
+    chmod +x *.sh
     
-    $ sudo ./install_deps.sh
-    
+    sudo ./install_deps.sh
     ```
+    Use the following command to checek if ros-cross-compile:arm64 instance is installed
+    ```
+    sudo docker image list
+    ```
+    ![Alt text](img/docker.png?raw=true "docker image")
+    
+    
+    If not, you will need to remove all image by using
+    ```
+    sudo docker rm $(sudo docker ps -aq) 
+    sudo docker rmi -f $(sudo docker images -q)
+    ```
+    After that, you back to the bedginning of the process to run.
+    ```
+    sudo ./reset_image.sh
+    ```
+    
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
     #  Make sure previous step is complete first
-    $ rosdep update
+    rosdep update
     
     ```
 ### Run in Simulation and Explore [~30 mins]
@@ -68,8 +84,8 @@ aws iot describe-endpoint
 1. Zip the teleop client app
     ```
     # Make sure you are in the jetbot directory
-    $ cd ~/environment/jetbot
-    $ zip teleop.zip assets/teleop/*
+    cd ~/environment/jetbot
+    zip teleop.zip assets/teleop/*
     ```
 1. Download the zip file in the file explorer and unzip it on the desktop
 1. Open the robogui.html file in a browser and make sure the connection status states Connected
@@ -87,15 +103,15 @@ sudo ./reset_cred.sh
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
-     $ cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
-     $ chmod +x *
+    cd ~/environment/jetbot/robot_ws/src/jetbot_app/nodes
+    chmod +x *
      
     # Make sure you are in the jetbot directory
-    $ cd ~/environment/jetbot
+    cd ~/environment/jetbot
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
-    $ docker run --rm -ti -v $(pwd):/environment/jetbot jetbot-ros
+    sudo docker run --rm -ti -v $(pwd):/environment/jetbot  ros-cross-compile:arm64
 
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
@@ -111,7 +127,7 @@ sudo ./reset_cred.sh
     ```
     # Make sure you exited out of the container in previous step
     # Copy the robot application to S3
-    $ aws s3 cp ./robot_ws/arm64_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/aarch64/output.tar
+    aws s3 cp ./robot_ws/arm64_bundle/output.tar s3://<S3-BUCKET-NAME>/jetbot/aarch64/output.tar
     ```
 
 ## Deploying with RoboMaker
@@ -191,30 +207,17 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 1. Unzip your device certificates to the robot:
 
     ```
-    # Copy the local security resources to the robot
-    $ scp /path/to/downladed-zip/<robot-certs>.zip jetbot@<ip-addres>:/home/jetbot/robomaker-robot-certs.zip
-
-    # SSH to the robot
-    $ ssh jetbot@<ip-address>
-
-    # Switch to the root user
-    $ sudo su -s /bin/bash
 
     # Unzip the jetbot security credentials to greengrass certificate store
-    $ unzip /home/jetbot/<greengrass-certs>.zip -d /greengrass
+    $ sudo unzip ~/<<robot_cert>>.zip -d /greengrass/
     
     # update the CA certificate used by RoboMaker
     $ cd /greengrass/certs/
-    $ wget -O root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
-    
+    $ sudo wget -O /greengrass/certs/root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
+   
     # start greengrass core
     $ sudo /greengrass/ggc/core/greengrassd start
     
-    # Exit the root shell
-    $ exit # or Ctrl-d
-
-    # Terminate the ssh connection
-    $ exit # or Ctrl-d
     ```
 
 ### Create a Fleet

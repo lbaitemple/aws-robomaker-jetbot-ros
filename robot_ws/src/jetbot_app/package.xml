@@ -13,6 +13,7 @@
   <depend>rospy</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
   <depend>aws-iot-sdk-python</depend>
   <depend>adafruit-motorhat-pip</depend>
   <depend>adafruit-ssd1306-pip</depend>

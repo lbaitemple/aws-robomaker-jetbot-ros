@@ -37,6 +37,7 @@ catkin_package(
   CATKIN_DEPENDS
     rospy
     std_msgs
+    geometry_msgs
     sensor_msgs
 )
 
