@@ -28,9 +28,9 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     
     chmod +x *.sh
     
-    sudo ./reset_image.sh
+    sudo ./install_deps.sh
     ```
-    Use the following command to checek if  jetbot-ros instance is installed
+    Use the following command to checek if ros-cross-compile:arm64 instance is installed
     ```
     sudo docker image list
     ```
@@ -39,8 +39,10 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     sudo docker rm $(sudo docker ps -aq) 
     sudo docker rmi -f $(sudo docker images -q)
     ```
-    After that, you back to the bedginning of the process to rerun install_deps.sh.
-
+    After that, you back to the bedginning of the process to run.
+    ```
+    sudo ./reset_image.sh
+    ```
     
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
