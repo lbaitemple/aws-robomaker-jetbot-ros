@@ -96,10 +96,7 @@ aws iot describe-endpoint
 1. Open the RoboMaker IDE and navigate to the terminal
 
 1. need to reset the **jetbot** credential if you have not used green grass for sometimee
-```
-cd ~/environment/jetbot/assets/scripts
-sudo ./reset_cred.sh
-```
+
 
 1. Change to the **jetbot** directory and build & bundle the ROS application in a docker container
     ```
