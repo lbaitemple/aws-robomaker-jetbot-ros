@@ -36,7 +36,6 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     ![Alt text](img/docker.png?raw=true "docker image")
     
-    ![picture](img/docker.png)
     
     If not, you will need to remove all image by using
     ```
