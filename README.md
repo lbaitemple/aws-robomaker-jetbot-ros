@@ -34,6 +34,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     sudo docker image list
     ```
+    ![Alt text](img/docckeer.png?raw=true "docker image")
     If not, you will need to remove all image by using
     ```
     sudo docker rm $(sudo docker ps -aq) 
