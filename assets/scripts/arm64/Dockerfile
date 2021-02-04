@@ -22,11 +22,7 @@ RUN apt-get update && apt-get install -y apt-transport-https \
 # Install Python and colcon
 RUN apt-get update && apt-get install -y \
 python \
-python3-apt \
-curl \
-&& curl -O https://bootstrap.pypa.io/get-pip.py \
-&& python3 get-pip.py \
-&& python2 get-pip.py \
+python3-apt python-pip python3-pip \
 && python3 -m pip install -U colcon-ros-bundle
 
 # Add custom rosdep rules
