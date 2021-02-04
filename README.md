@@ -44,6 +44,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     After that, you back to the bedginning of the process to run.
     ```
+    sudo rm -rf /root/.ros
     sudo ./reset_image.sh
     ```
     
