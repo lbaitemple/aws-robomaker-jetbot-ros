@@ -18,28 +18,35 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     mv aws-robomaker-jetbot-ros rpi
     ```
 
+
 ### Install Dependencies [~15 mins]
 1. Open the RoboMaker IDE and navigate to the terminal.
 
 1. In the terminal window, change to the `jetbot/assets` directory 
     ```
     # Run install_dep.sh to install prerequisite
-    cd ~/environment/rpi/assets/scripts
+    cd ~/environment/rpi/assets/scripts/arm32
     
-    chmod +x *.sh 
+    chmod +x *.sh
     
     sudo ./install_deps.sh
-    sudo ./reset_cred.sh
     ```
-    Use the following command to checek if  ros-cross-compile:armhf instancee is installed
+    Use the following command to checek if ros-cross-compile:armhf instance is installed
     ```
     sudo docker image list
     ```
+    ![Alt text](img/docker32.png?raw=true "docker image")
+    
+    
     If not, you will need to remove all image by using
     ```
+    sudo docker rm $(sudo docker ps -aq) 
     sudo docker rmi -f $(sudo docker images -q)
     ```
-    After that, you back to the bedginning of the process to rerun install_deps.sh.
+    After that, you back to the bedginning of the process to run.
+    ```
+    sudo ./reset_image.sh
+    ```
     
 1. Wait for previous step to complete and in the same terminal window, run the following command to update ROS dependencies 
     ```
@@ -47,6 +54,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     rosdep update
     
     ```
+
 ### Run in Simulation and Explore [~30 mins]
 
 ### install
