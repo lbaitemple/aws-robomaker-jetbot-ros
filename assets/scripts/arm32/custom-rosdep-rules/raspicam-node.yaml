@@ -1,0 +1,3 @@
+raspicam_node:
+  ubuntu:
+    xenial: [ros-kinetic-raspicam-node]
