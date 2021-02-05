@@ -5,6 +5,8 @@ FROM arm32v7/ros:melodic-ros-base-bionic
 ENV PATH="/root/.local/bin:${PATH}"
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 COPY qemu-arm-static /usr/bin
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 #RUN printf "yaml file:///home/ubuntu/environment/rpi/assets/scripts/jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-customdepenencies.list
 
 WORKDIR /environment/rpi
