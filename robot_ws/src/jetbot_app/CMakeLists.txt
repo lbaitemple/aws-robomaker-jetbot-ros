@@ -55,6 +55,8 @@ include_directories(/usr/include/gstreamer-1.0 /usr/include/glib-2.0 /usr/includ
 ################################################################################
 # Add your custom nodes here. 
 catkin_install_python(PROGRAMS 
+  nodes/circle.py
+  nodes/move.py
   nodes/teleop.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
