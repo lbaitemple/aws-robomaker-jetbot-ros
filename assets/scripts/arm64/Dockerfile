@@ -10,6 +10,7 @@ COPY qemu-aarch64-static /usr/bin
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Installed for convenience
+WORKDIR /environment/jetbot
 RUN apt-get update && apt-get install -y vim
 
 # Add raspicam_node sources to apt
