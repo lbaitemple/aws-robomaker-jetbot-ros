@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y apt-transport-https \
 
 
 # Install Python and colcon
-RUN apt-get update && apt-get install -y \
+RUN apt clean  && apt-get update && apt-get install -y \
 python \
 python3-apt python-pip python3-pip \
 && python3 -m pip install -U colcon-ros-bundle
