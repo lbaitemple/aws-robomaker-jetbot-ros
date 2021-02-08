@@ -16,8 +16,10 @@ RUN apt-get update && apt-get install -y vim
 # Add raspicam_node sources to apt
 
 RUN apt-get update && apt-get install -y apt-transport-https \
-&& echo "deb https://packages.ubiquityrobotics.com/ubuntu/ubiquity xenial main" > /etc/apt/sources.list.d/ubiquity-latest.list \
-&& apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C3032ED8
+&& echo "deb https://packages.ubiquityrobotics.com/ubuntu/ubiquity xenial main" > /etc/apt/sources.list.d/ubiquity-latest.list 
+
+## supress error
+RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C3032ED8  >> /dev/null 2>&1 
 
 
 # Install Python and colcon
