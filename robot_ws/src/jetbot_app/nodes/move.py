@@ -58,7 +58,7 @@ class Move():
 			self.motor_driver = QwiicScmd()
 			logger.info("init move - qwiic send commd")
 			if self.motor_driver.connected == False:
-				logger.info("init move -  conneectedd")
+				logger.info("init move -  not conneectedd")
 			else:
 				logger.info("init move - conneectedd")
 
