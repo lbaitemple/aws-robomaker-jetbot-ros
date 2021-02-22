@@ -274,8 +274,11 @@ An AWS RoboMake robot is also a Greengrass core. Core devices use certificates a
 
 On Robot terminal:
 ```
+sudo -i
+echo 'KERNEL=="i2c-[0-9]*", GROUP="i2c"' >> /etc/udev/rules.d/10-local_i2c_group.rules
 sudo usermod -G i2c ggc_user
-sudo chmod 0666 /dev/i2c-1
+sudo reboot
+# sudo chmod 0666 /dev/i2c-1
 wget https://raw.githubusercontent.com/lbaitemple/aws-robomaker-jetbot-ros/master/assets/scripts/startros.sh
 chmod +x startros.sh
 ```
