@@ -26,6 +26,7 @@ RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C3032
 RUN apt clean  && apt-get update && apt-get install -y \
 python \
 python3-apt python-pip python3-pip \
+&& python3 -m pip install  MarkupSafe==1.1.1 \
 && python3 -m pip install -U colcon-ros-bundle
 
 # Add custom rosdep rules
