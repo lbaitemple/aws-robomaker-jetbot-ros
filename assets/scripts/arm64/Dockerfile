@@ -1,7 +1,9 @@
-ARG ROS_VERSION=melodic
-ARG UBUNTU_VERSION=bionic
-FROM arm64v8/ros:melodic-ros-base-bionic
-
+# Foxy
+ARG ROS_VERSION=foxy
+# Ubuntu 20.04.2 LTS
+ARG UBUNTU_VERSION=focal
+#FROM arm64v8/ros:melodic-ros-base-bionic.  (arm64v8/ros:foxy-ros-base-focal)
+FROM arm64v8/ros:foxy
 ENV PATH="/root/.local/bin:${PATH}"
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 # Copy qemu from the host machine
@@ -24,8 +26,7 @@ RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C3032
 
 # Install Python and colcon
 RUN apt clean  && apt-get update && apt-get install -y \
-python \
-python3-apt python-pip python3-pip \
+python3-apt python3-pip \
 && python3 -m pip install  MarkupSafe==1.1.1 \
 && python3 -m pip install -U colcon-ros-bundle
 
@@ -34,6 +35,8 @@ COPY custom-rosdep-rules/raspicam-node.yaml /etc/ros/rosdep/custom-rules/raspica
 #RUN echo "yaml file:/etc/ros/rosdep/custom-rules/raspicam-node.yaml" > /etc/ros/rosdep/sources.list.d/22-raspicam-node.list \
 RUN echo "yaml https://s3-us-west-2.amazonaws.com/rosdep/python.yaml" > /etc/ros/rosdep/sources.list.d/18-aws-python.list \
 && rosdep update
+
+WORKDIR /environment/jetbot
 
 # Add custom pip rules
 COPY custom-pip-rules.conf /etc/pip.conf

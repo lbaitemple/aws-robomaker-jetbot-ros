@@ -16,7 +16,7 @@ cp /usr/bin/qemu-aarch64-static .
 #Build Docker Container
 #docker build -t jetbot-ros -f Dockerfile .
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes # This step will execute the registering scripts
-docker build -t ros-cross-compile:arm64 .
+docker build -t ros-cross-compile:arm64ros2 .
 
 #fix ros permissions
 rosdep fix-permissions
