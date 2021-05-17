@@ -109,7 +109,7 @@ aws iot describe-endpoint
     
     # IMPORTANT: Make sure you are in the jetbot directory
     # Build and bundle the robot application
-    sudo docker run --rm -ti -v $(pwd):/environment/jetbot  ros-cross-compile:arm64
+    sudo docker run --rm -ti -v $(pwd):/environment/jetbot  ros-cross-compile:arm64ros2
 
     # You will be dropped into the shell of the docker container
     # the prompt will be similar to the following root@83afb0b35322:/environment/jetbot# 
