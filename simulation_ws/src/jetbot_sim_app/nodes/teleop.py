@@ -6,9 +6,11 @@ import json
 import os
 import time
 # ros imports
-import rospy
+import rclpy
+from rclpy.node import Node
 import rospkg
 from geometry_msgs.msg import Twist
+from std_msgs.msg import String
 # aws imports
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
@@ -51,9 +53,12 @@ def setup_logging(loglevel = LOGLEVEL, logname = LOGNAME):
 
 
 
-class Teleop():
+class Teleop(Node):
     def __init__(self):
-        self._cmd_pub = rospy.Publisher('jetbot_diff_controller/cmd_vel', Twist, queue_size=1)
+        super().__init__('minimal_teleop')
+        self.publisher_ = self.create_publisher('jetbot_diff_controller/cmd_vel', Twist, queue_size=1)
+        timer_period = 0.5  # seconds
+        self.timer = self.create_timer(timer_period, self.run_robot)
         self.twist = Twist()
         self.mqtt_client = self.mqtt_connect()
 
@@ -124,15 +129,13 @@ class Teleop():
 
 
 
-def main():
+def main(args=None):
     logger.info('jetbot_sim_app Teleop Node starting...')
-    rospy.init_node('teleop')
-    try:
-        teleop = Teleop()
-        teleop.run_robot()
-    except rospy.ROSInterruptException:
-        pass
-
+    rclpy.init(args=args)
+    teleop = Teleop()
+    teleop.destroy_node()
+    rclpy.shutdown()
+    
 if __name__ == '__main__':
     logger = setup_logging()
     main()
