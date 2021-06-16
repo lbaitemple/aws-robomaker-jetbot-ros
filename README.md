@@ -46,7 +46,7 @@ vcs import < .rosinstall
 rosdep  install --from-paths src --ignore-src -r -y
 colcon build
 colcon bundle
-aws s3 cp ./bundle/output.tar s3://ani717/jetbot_simulation.tar
+aws s3 cp ./bundle/output.tar s3://<s3 bucket name>/jetbot_simulation.tar
 ```
 
 ### Setup Credentials for Joystick Control
