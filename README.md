@@ -17,6 +17,7 @@ git clone -b melodic https://github.com/ANI717/aws-robomaker-jetbot-ros```
 mv aws-robomaker-jetbot-ros jetbot
 ```
 
+
 ### Set IoT Endpoints and Create Docker Container
 ```
 cd ~/environment/jetbot/assets/scripts
@@ -25,12 +26,14 @@ sudo ./set_iot.sh
 sudo ./set_docker.sh
 ```
 
+
 ### Install Dependencies
 ```
 rosdep update
 sudo apt install -y cmake gcc g++ qt{4,5}-qmake libqt4-dev
 sudo apt -y autoremove
 ```
+
 
 ### Build, Bundle and Upload Robot Workspace
 ```
@@ -40,6 +43,7 @@ colcon build
 colcon bundle
 aws s3 cp ./bundle/output.tar s3://<s3 bucket name>/jetbot_robot_X86_64.tar
 ```
+
 
 ### Build, Bundle and Upload Simulation Workspace
 ```
@@ -51,6 +55,7 @@ colcon bundle
 aws s3 cp ./bundle/output.tar s3://ani717/jetbot_simulation.tar
 ```
 
+
 ### Setup Credentials
 Copy AWS Credentials to `~/environment/jetbot/assets/scripts/resources/credentials` and run following commands.
 ```
@@ -58,12 +63,15 @@ cd ~/environment/jetbot/assets/scripts
 ./set_credentials.sh
 ```
 
-### RObot Deployment
+
+### Robot Deployment
 Follow steps from [master](https://github.com/ANI717/aws-robomaker-jetbot-ros/tree/master) branch.
 
 
 ### Test from Cloud9 (Not Necessary)
+```
 export ROBOT_NAME=joystick1
 export MOTOR_CONTROLLER=qwiic
 colcon build && source install/setup.bash && roslaunch jetbot_app teleop.launch
 colcon build && source install/setup.bash && roslaunch jetbot_sim_app teleop.launch
+```
