@@ -58,7 +58,7 @@ class Move():
 			self.motor_driver = QwiicScmd()
 			logger.info("init move - qwiic send commd")
 			if self.motor_driver.connected == False:
-				logger.info("init move -  conneectedd")
+				logger.info("init move -  not conneectedd")
 			else:
 				logger.info("init move - conneectedd")
 
@@ -73,14 +73,19 @@ class Move():
 		if MOTOR_CONTROLLER == 'adafruit':
 			if motor_ID == 1:
 				motor = self.motor_left
+				_ina = 1
+        			_inb = 0
 			elif motor_ID == 2:
 				motor = self.motor_right
+				_ina = 2
+        			_inb = 3				
 			else:
 				rospy.logerror('set_speed(%d, %f) -> invalid motor_ID=%d', motor_ID, value, motor_ID)
 				return
-			
-			motor.setSpeed(speed)
-			if value > 0:
+			self.motor_driver._pwm.setPWM(_ina,0,0)
+    			self.motor_driver._pwm.setPWM(_inb,0,speed*16)
+			# motor.setSpeed(speed)
+			if speed > 0:
 				motor.run(Adafruit_MotorHAT.FORWARD)
 			else:
 				motor.run(Adafruit_MotorHAT.BACKWARD)
