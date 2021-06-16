@@ -58,6 +58,9 @@ cd ~/environment/jetbot/assets/scripts
 ./set_credentials.sh
 ```
 
+### RObot Deployment
+Follow steps from [master](https://github.com/ANI717/aws-robomaker-jetbot-ros/tree/master) branch.
+
 
 ### Test from Cloud9 (Not Necessary)
 export ROBOT_NAME=joystick1
