@@ -50,7 +50,7 @@ aws s3 cp ./bundle/output.tar s3://ani717/jetbot_simulation.tar
 ```
 
 ### Setup Credentials for Joystick Control
-Copy AWS Credentials to `~/environment/jetbot/assets/scripts/resources/credentials` and run following commands. Then download `~/environment/jetbot/assets/teleop` folder for controlling jetbot with virtual joystick.
+Copy AWS Credentials to `~/environment/jetbot/assets/scripts/resources/credentials` file and run following commands. Then download the `~/environment/jetbot/assets/teleop` folder for controlling jetbot with virtual joystick.
 ```
 cd ~/environment/jetbot/assets/scripts
 ./set_credentials.sh
