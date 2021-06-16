@@ -2,7 +2,7 @@
   <h1 align="center">JetBot ROS Application with AWS RoboMaker Support</h1>
 </p>
 
-We modified the [JetBot ROS Application](https://github.com/jerwallace/aws-robomaker-jetbot-ros) for arm64/.aarch64 machine support along with couple of changes for easy user interface. For detailed description of every steps regarding setup workspace, follow the [master](https://github.com/ANI717/aws-robomaker-jetbot-ros/tree/master) branch.
+We modified the [JetBot ROS Application](https://github.com/jerwallace/aws-robomaker-jetbot-ros) for arm64/.aarch64 machine support along with couple of changes for easy user interface. For detailed description of every steps regarding setup workspace, follow the [master](https://github.com/lbaitemple/aws-robomaker-jetbot-ros) branch.
 
 ### Colaborators
 [Computer Fusion Laboratory (CFL) - Temple University College of Engineering](https://sites.temple.edu/cflab/people/)
@@ -57,7 +57,7 @@ cd ~/environment/jetbot/assets/scripts
 ```
 
 ### Robot Deployment
-Follow steps from [master](https://github.com/ANI717/aws-robomaker-jetbot-ros/tree/master) branch.
+Follow steps from [master](https://github.com/lbaitemple/aws-robomaker-jetbot-ros) branch.
 
 ### Test from Cloud9 (Not Necessary)
 ```
