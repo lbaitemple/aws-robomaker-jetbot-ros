@@ -1,17 +1,14 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 
 project(jetbot_description)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake REQUIRED)
+find_package(gazebo_ros REQUIRED)
 
-catkin_package()
-
-find_package(roslaunch)
-
-catkin_install_python(PROGRAMS
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+install(DIRECTORY config launch models rviz
+  DESTINATION share/${PROJECT_NAME}
 )
 
-install(DIRECTORY config launch meshes urdf rviz
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir}
-)
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/${PROJECT_NAME}.dsv.in")
+
+ament_package()

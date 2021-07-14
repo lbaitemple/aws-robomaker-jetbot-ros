@@ -1,10 +1,11 @@
 WORK_DIR=$(pwd)
+export AWS_DEFAULT_REGION=us-east-1
 
 # Set variables
 ROBOT_CERTS_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/config
-ROBOT_SRC_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/src/jetbot_app
+ROBOT_SRC_FOLDER=$WORK_DIR/../../robot_ws/src/jetbot_app/jetbot_app
 SIM_CERTS_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/config
-SIM_SRC_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/src/jetbot_sim_app
+SIM_SRC_FOLDER=$WORK_DIR/../../simulation_ws/src/jetbot_sim_app/jetbot_sim_app
 
 
 # Create directories

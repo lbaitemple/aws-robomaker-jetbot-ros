@@ -1,16 +1,21 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 
 # python imports
 import logging
 import json
 import os
 import time
+
+from ament_index_python.packages import get_package_share_directory
+
 # ros imports
-import rospy
-import rospkg
+import rclpy
+from rclpy.node import Node
 from geometry_msgs.msg import Twist
 # aws imports
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
+
+
 
 #Set the verbosity of logs and the logger name
 LOGLEVEL = logging.DEBUG 
@@ -22,12 +27,13 @@ KEYFILE = 'private.pem.key'
 CERTIFICATEFILE = 'certificate.pem.crt'
 #MQTT Settings
 #ClientID and Topics should be unique for all MQTT connections
-TOPIC = os.environ['ROBOT_NAME'].lower()
-CLIENTID = os.environ['ROBOT_NAME'].lower()
-from jetbot_app.endpoint import ENDPOINT
+TOPIC = 'joystick1'
+CLIENTID = 'jetbot_sim_app1'
+#ENDPOINT = os.environ['IOT_ENDPOINT'].lower()
+from jetbot_sim_app.endpoint import ENDPOINT
 #ROS Settings, for example application name
-ROSAPP = 'jetbot_app'
-CMD_VEL_TOPIC = '/move/cmd_vel'
+ROSAPP = 'jetbot_sim_app'
+
 
 def setup_logging(loglevel = LOGLEVEL, logname = LOGNAME):
     """
@@ -45,9 +51,13 @@ def setup_logging(loglevel = LOGLEVEL, logname = LOGNAME):
     logger.addHandler(ch)
     return logger
 
-class Teleop():
+
+
+class Teleop(Node):
     def __init__(self):
-        self._cmd_pub = rospy.Publisher(CMD_VEL_TOPIC, Twist, queue_size=1)
+        super().__init__('teleop')
+        
+        self._cmd_pub = self.create_publisher(Twist, 'jetbot_diff_controller/cmd_vel', 1)
         self.twist = Twist()
         self.mqtt_client = self.mqtt_connect()
 
@@ -56,13 +66,13 @@ class Teleop():
         Initializes the connection to AWS IoT MQTT then connects
         This is required for the simulation to receive data from the joystick app
         """
-        logger.info('Initializing AWS IoT MQTT connection')
+        setup_logging().info('Initializing AWS IoT MQTT connection')
         self.mqtt_client = AWSIoTMQTTClient(CLIENTID)
         self.mqtt_client.configureEndpoint(ENDPOINT, 8883)
         self.mqtt_client.configureCredentials(self.path(CAFILE), self.path(KEYFILE), self.path(CERTIFICATEFILE))
         self.mqtt_client.configureConnectDisconnectTimeout(10)
         self.mqtt_client.configureMQTTOperationTimeout(5)
-        logger.info('AWS IoT MQTT Connections status: %s', self.mqtt_client.connect())
+        setup_logging().info('AWS IoT MQTT Connections status: %s', self.mqtt_client.connect())
         return self.mqtt_client
 
     def path(self, filename):
@@ -70,8 +80,8 @@ class Teleop():
         Creates the full path to the certificate files in the ROS application
         This is needed so the MQTT client can load the certs to authenticate with AWS IoT Core
         """
-        rospack = rospkg.RosPack()
-        return os.path.join(rospack.get_path(ROSAPP), 'config', filename)
+        
+        return os.path.join(get_package_share_directory(ROSAPP), 'config', filename)
 
     def custom_callback(self, client, userdata, message):
         """
@@ -82,7 +92,7 @@ class Teleop():
         The JSON message is read from the Teleop.MQTTTOPIC, converted to a Twist message
         and published to the Teleop.ROSTOPIC
         """
-        logger.info('Received from %s, message: %s', TOPIC, message.payload)
+        setup_logging().info('Received from %s, message: %s', TOPIC, message.payload)
         payload = json.loads(message.payload)
         self.twist.angular.x = payload["angular"]["x"]
         self.twist.angular.y = payload["angular"]["y"]
@@ -91,7 +101,7 @@ class Teleop():
         self.twist.linear.y = payload["linear"]["y"]
         self.twist.linear.z = payload["linear"]["z"]
         self._cmd_pub.publish(self.twist)
-        logger.info('Joystick message published to ROS')
+        setup_logging().info('Joystick message published to ROS')
         return
 
     def subscribe_joystick(self):
@@ -100,7 +110,7 @@ class Teleop():
 
         Any new messages will be sent to the callback for processing
         """
-        logger.info("Subsribing to topic %s", TOPIC)
+        setup_logging().info("Subsribing to topic %s", TOPIC)
         self.mqtt_client.subscribe(TOPIC, 1, self.custom_callback)
         return
 
@@ -116,15 +126,13 @@ class Teleop():
             time.sleep(5)
         return
 
-def main():
-    logger.info('jetbot_sim_app Teleop Node starting...')
-    rospy.init_node('teleop')
-    try:
-        teleop = Teleop()
-        teleop.run_robot()
-    except rospy.ROSInterruptException:
-        pass
+
+
+def main(args=None):
+    setup_logging().info('jetbot_sim_app Teleop Node starting...')
+    rclpy.init(args=args)
+    teleop = Teleop()
+    teleop.run_robot()
 
 if __name__ == '__main__':
-    logger = setup_logging()
     main()

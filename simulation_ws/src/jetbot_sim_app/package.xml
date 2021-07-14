@@ -1,22 +1,29 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>jetbot_sim_app</name>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <description>
-    A custom AWS RoboMaker simulation package with a JetBot in an empty Gazebo world.
+    A custom ROS2 AWS RoboMaker simulation package with a JetBot in an empty Gazebo world.
   </description>
   <license>MIT</license>
-  <author email="aws-robomaker@amazon.com">AWS RoboMaker</author>
-  <maintainer email="aws-robomaker@amazon.com">AWS RoboMaker</maintainer>
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>rospy</depend>
-  <depend>std_msgs</depend>
-  <depend>gazebo_ros</depend>
-  <depend>gazebo_plugins</depend>
-  <depend>gazebo_ros_control</depend>
-  <depend>xacro</depend>
+  <author email="animesh.ani@live.com">ANI717</author>
+  <maintainer email="animesh.ani@live.com">ANI717</maintainer>
+  <license>MIT-0</license>
+  
+  <depend>time</depend>
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
   <depend>awsiotpythonsdk-pip</depend>
-  <depend>jetbot_description</depend>
-  <depend>rospy_message_converter</depend>
-  <exec_depend>gazebo</exec_depend>
+  
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_index_python</test_depend>
+  
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
 </package>

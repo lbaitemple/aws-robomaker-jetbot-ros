@@ -1,30 +1,32 @@
-<package format="2">
+<?xml version="1.0"?>
+<package format="3">
   <name>jetbot_description</name>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <description>
-    <p>URDF Description package for JetBot</p>
+    <p>ROS2 URDF Description package for JetBot</p>
     <p>This package contains configuration data, 3D models and launch files for JetBot robot</p>
   </description>
-  <author email="ros-contributions@amazon.com">AWS RoboMaker</author>
-  <maintainer email="ros-contributions@amazon.com">AWS RoboMaker</maintainer>
+  <author email="animesh.ani@live.com">ANI717</author>
+  <maintainer email="animesh.ani@live.com">ANI717</maintainer>
   <license>MIT-0</license>
-  <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roslaunch</build_depend>
-  <exec_depend>rviz</exec_depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <depend>gazebo_ros_control</depend>
+  
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros2_control</depend>
   <depend>gazebo_plugins</depend>
-  <depend>sensor_msgs</depend>
-  <depend>ros_control</depend>
-  <depend>ros_controllers</depend>
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
   <depend>robot_state_publisher</depend>
   <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
   <depend>joint_state_controller</depend>
-  <depend>geometry_msgs</depend>
-  <depend>aws_robomaker_racetrack_world</depend>
-  <exec_depend>teleop_twist_keyboard</exec_depend>
+  <depend>rviz2</depend>
+  <depend>xacro</depend>
   
   <export>
-    <architecture_independent />
+    <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/.."/>
+    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}"/>
   </export>
 </package>

@@ -1,1 +1,1 @@
-- git: {local-name: src/aws-robomaker-racetrack-world, uri: 'https://github.com/aws-robotics/aws-robomaker-racetrack-world.git', version: master}
+- git: {local-name: src/aws-robomaker-racetrack-world, uri: 'https://github.com/ANI717/aws-robomaker-racetrack-world-ros2.git', version: main}

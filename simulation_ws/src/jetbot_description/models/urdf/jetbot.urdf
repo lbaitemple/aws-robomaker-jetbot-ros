@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="JetBot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:property name="M_PI_2" value="1.570796327"/>
-  <xacro:include filename="$(find jetbot_description)/urdf/jetbot.gazebo" />
+  <xacro:include filename="$(find jetbot_description)/models/urdf/jetbot.gazebo" />
 
 
  <!-- Create a dummy link as base link -->
@@ -22,13 +22,13 @@ xmlns:xacro="http://www.ros.org/wiki/xacro"
     <collision name="JetBot__collision">
       <origin rpy="1.57079  0       1.57079" xyz="0     0     0.043"/>
       <geometry>
-        <mesh filename="package://jetbot_description/meshes/JetBot-v3-Chassis.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://meshes/JetBot-v3-Chassis.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual name="JetBot__visual">
       <origin rpy="1.57079  0       1.57079" xyz="0     0     0.043"/>
       <geometry>
-        <mesh filename="package://jetbot_description/meshes/JetBot-v3-Chassis.dae" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://meshes/JetBot-v3-Chassis.dae" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
   </link>
@@ -97,7 +97,7 @@ xmlns:xacro="http://www.ros.org/wiki/xacro"
     <visual name="JetBot__visual">
       <origin rpy="0  0  0" xyz="0  0  0"/>
       <geometry>
-        <mesh filename="package://jetbot_description/meshes/JetBot-v3-Wheel.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://meshes/JetBot-v3-Wheel.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
   </link>
@@ -117,7 +117,7 @@ xmlns:xacro="http://www.ros.org/wiki/xacro"
     <visual name="JetBot__visual">
       <origin rpy="0  0  0" xyz="0  0  0"/>
       <geometry>
-        <mesh filename="package://jetbot_description/meshes/JetBot-v3-Wheel.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://meshes/JetBot-v3-Wheel.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
   </link>
@@ -152,7 +152,7 @@ xmlns:xacro="http://www.ros.org/wiki/xacro"
 
   <!-- ROS control plugin -->
   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros2_control.so">
       <robotNamespace>/</robotNamespace>
     </plugin>
   </gazebo>
