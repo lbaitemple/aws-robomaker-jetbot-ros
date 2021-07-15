@@ -94,12 +94,12 @@ class Teleop(Node):
         """
         setup_logging().info('Received from %s, message: %s', TOPIC, message.payload)
         payload = json.loads(message.payload)
-        self.twist.angular.x = payload["angular"]["x"]
-        self.twist.angular.y = payload["angular"]["y"]
-        self.twist.angular.z = payload["angular"]["z"]
-        self.twist.linear.x = payload["linear"]["x"]
-        self.twist.linear.y = payload["linear"]["y"]
-        self.twist.linear.z = payload["linear"]["z"]
+        self.twist.angular.x = float(payload["angular"]["x"])
+        self.twist.angular.y = float(payload["angular"]["y"])
+        self.twist.angular.z = float(payload["angular"]["z"])
+        self.twist.linear.x = float(payload["linear"]["x"])
+        self.twist.linear.y = float(payload["linear"]["y"])
+        self.twist.linear.z = float(payload["linear"]["z"])
         self._cmd_pub.publish(self.twist)
         setup_logging().info('Joystick message published to ROS')
         return
