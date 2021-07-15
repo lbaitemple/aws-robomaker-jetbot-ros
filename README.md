@@ -11,7 +11,7 @@ We modified the [JetBot ROS Application](https://github.com/jerwallace/aws-robom
 
 ### Download Workspace
 ```
-git clone -b aarch64_melodic https://github.com/ANI717/aws-robomaker-jetbot-ros
+git clone -b aarch64_ros2 https://github.com/ANI717/aws-robomaker-jetbot-ros
 mv aws-robomaker-jetbot-ros jetbot
 ```
 
@@ -19,7 +19,7 @@ mv aws-robomaker-jetbot-ros jetbot
 ```
 cd ~/environment/jetbot/assets/scripts
 chmod +x *.sh
-sudo ./set_iot.sh
+./set_iot.sh
 sudo ./set_docker.sh
 ```
 
