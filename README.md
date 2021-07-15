@@ -11,7 +11,7 @@ We modified the [JetBot ROS Application](https://github.com/jerwallace/aws-robom
 
 ### Download Workspace
 ```
-git clone -b aarch64-melodic https://github.com/ANI717/aws-robomaker-jetbot-ros
+git clone -b aarch64_melodic https://github.com/ANI717/aws-robomaker-jetbot-ros
 mv aws-robomaker-jetbot-ros jetbot
 ```
 
