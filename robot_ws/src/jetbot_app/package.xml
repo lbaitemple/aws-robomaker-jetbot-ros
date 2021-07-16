@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>jetbot_app</name>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <description>
-    A custom AWS RoboMaker robot package with a JetBot
+    A custom ROS2 AWS RoboMaker robot package with a JetBot
   </description>
   <license>MIT</license>
-  <author email="aws-robomaker@amazon.com">AWS RoboMaker</author>
-  <maintainer email="aws-robomaker@amazon.com">AWS RoboMaker</maintainer>
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>roscpp</depend>
-  <depend>rospy</depend>
+  <author email="animesh.ani@live.com">ANI717</author>
+  <maintainer email="animesh.ani@live.com">ANI717</maintainer>
+  <license>MIT-0</license>
+  
+  <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
@@ -21,4 +21,14 @@
   <depend>smbus</depend>
   <depend>yaml</depend>
   <depend>yaml-pip</depend>
+  
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_index_python</test_depend>
+  
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
 </package>

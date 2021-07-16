@@ -1,13 +1,32 @@
-## ! DO NOT MANUALLY INVOKE THIS setup.py, USE CATKIN INSTEAD
-## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
+from setuptools import setup, find_packages
+from glob import glob
 
-from distutils.core import setup
-from catkin_pkg.python_setup import generate_distutils_setup
+PACKAGE_NAME = 'jetbot_app'
 
-# fetch values from package.xml
-setup_args = generate_distutils_setup(
-    packages=['jetbot_app'],
-    package_dir={'': 'src'}
+setup(
+    name=PACKAGE_NAME,
+    version='0.0.0',
+    packages=find_packages(),
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + PACKAGE_NAME]),
+        ('share/' + PACKAGE_NAME, ['package.xml']),
+        ('share/' + PACKAGE_NAME + '/launch', glob('launch/*')),
+        ('share/' + PACKAGE_NAME + '/config', glob('config/*')),
+        ('share/' + PACKAGE_NAME + '/deploymentScripts', glob('deploymentScripts/*')),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='ANI717',
+    maintainer_email='animesh.ani@live.com',
+    description='Jetbot Simulation App Package for Robot Running',
+    license='MIT License',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'circle = jetbot_app.rotate:main',
+            'teleop = jetbot_app.teleop:main',
+            'move = jetbot_app.move:main',
+        ],
+    },
 )
-
-setup(**setup_args)
