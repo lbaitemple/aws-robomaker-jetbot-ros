@@ -1,5 +1,11 @@
 ## Building a Robot Application with RoboMaker
 
+#### fix ROS key
+```
+curl http://repo.ros2.org/repos.key | sudo apt-key add -
+sudo apt update --fix-missing
+```
+
 ### Files below need to be updated through either CFN/script or manually
 **Prerequisites - must have the following information before continue the lab - 
 IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket, region, accessKeyId, secretAccessKey**
