@@ -61,8 +61,3 @@ aws iot attach-policy \
 aws iot attach-policy \
 --policy-name $IOTPOLICYNAME \
 --target $SIM_CERTARN
-
-
-# Add ROS dependencies
-cp -a resources/deps/* /etc/ros/rosdep/sources.list.d/
-echo "yaml file:///$WORK_DIR/resources/jetbot.yaml" > /etc/ros/rosdep/sources.list.d/21-customdepenencies.list
