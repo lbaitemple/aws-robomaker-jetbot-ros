@@ -39,9 +39,9 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(jetbot_description_dir,'launch','gazebo_launch.py')))
     
-    circle_cmd = Node(
+    teleop_cmd = Node(
         package = 'jetbot_sim_app',
-        executable = 'circle')
+        executable = 'teleop')
 
         
     # Create the launch description and populate
@@ -49,7 +49,7 @@ def generate_launch_description():
     
     # Add all actions
     ld.add_action(jetbot_launch_cmd)
-    ld.add_action(circle_cmd)
+    ld.add_action(teleop_cmd)
         
     return ld
 
