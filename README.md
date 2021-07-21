@@ -63,6 +63,6 @@ Follow steps from [master](https://github.com/lbaitemple/aws-robomaker-jetbot-ro
 ```
 export ROBOT_NAME=joystick1
 export MOTOR_CONTROLLER=qwiic
-colcon build && source install/setup.bash && roslaunch jetbot_app teleop.launch
-colcon build && source install/setup.bash && roslaunch jetbot_sim_app teleop.launch
+colcon build && source install/setup.bash && ros2 launch jetbot_app teleop_launch.py
+colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
 ```
