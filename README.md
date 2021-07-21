@@ -29,7 +29,7 @@ cd ~/environment/jetbot/assets/scripts
 ./set_credentials.sh
 ```
 
-### Build, Bundle and Run Simulation Workspace
+### Build, Source and Run Simulation Workspace
 ```
 cd  ~/environment/jetbot/simulation_ws
 rosws update
