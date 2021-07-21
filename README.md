@@ -40,3 +40,6 @@ export DISPLAY=:0
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app circle_launch.py
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
 ```
+
+### Robot URDF file
+Modify `jetbot_description_launch.py` and `spawn_launch.py' from *jetbot_description* package if you want to use different URDF file.
