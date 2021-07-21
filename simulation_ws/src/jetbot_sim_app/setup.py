@@ -24,7 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'circle = jetbot_sim_app.rotate:main',
+            'circle = jetbot_sim_app.circle:main',
             'teleop = jetbot_sim_app.teleop:main',
         ],
     },

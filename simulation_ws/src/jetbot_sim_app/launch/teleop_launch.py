@@ -10,7 +10,9 @@ Revision History:
         2021-07-09 (Animesh): Baseline Software.
 
 Example:
-        $ colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
+        $ colcon build && source install/setup.bash && ros2 launch jetbot_sim_app circle_launch.py
+        $ source install/setup.bash && ros2 launch jetbot_sim_app circle_launch.py
+        $ ros2 launch jetbot_sim_app circle_launch.py
 
 """
 
@@ -21,10 +23,8 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
-from launch.conditions import IfCondition
+from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_ros.actions import Node
 
 
@@ -39,19 +39,9 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(jetbot_description_dir,'launch','gazebo_launch.py')))
     
-    controller_manager_cmd = Node(
-        package='controller_manager',
-        executable = 'spawner.py',
-        name='jetbot_controller_spawner',
-        arguments = [
-            '-p',
-            os.path.join(jetbot_description_dir,'config','jetbot_diff_drive_control.yaml'),
-            "jetbot_diff_controller"])
-    
-    circle_cmd = Node(
+    teleop_cmd = Node(
         package = 'jetbot_sim_app',
-        executable = 'teleop',
-        )
+        executable = 'teleop')
 
         
     # Create the launch description and populate
@@ -59,8 +49,7 @@ def generate_launch_description():
     
     # Add all actions
     ld.add_action(jetbot_launch_cmd)
-    ld.add_action(controller_manager_cmd)
-    ld.add_action(circle_cmd)
+    ld.add_action(teleop_cmd)
         
     return ld
 

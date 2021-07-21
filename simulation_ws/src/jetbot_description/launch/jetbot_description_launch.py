@@ -34,7 +34,7 @@ def generate_launch_description():
 	
     # Get the package directory
     package_dir = get_package_share_directory('jetbot_description')
-    urdf_file_name = 'jetbot_xacro_urdf.xml'
+    urdf_file_name = 'jetbot_bai.xml'
     
     
     # Create launch configuration variables
