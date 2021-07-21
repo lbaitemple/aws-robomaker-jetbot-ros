@@ -15,6 +15,7 @@
   <depend>gazebo_ros</depend>
   <depend>gazebo_ros_pkgs</depend>
   <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
   <depend>rviz2</depend>
   <depend>xacro</depend>
   
