@@ -13,8 +13,6 @@
   <depend>time</depend>
   <depend>rclpy</depend>
   <depend>geometry_msgs</depend>
-  <depend>ros2_control</depend>
-  <depend>ros2_controllers</depend>
   <depend>awsiotpythonsdk-pip</depend>
   
   <test_depend>ament_copyright</test_depend>
