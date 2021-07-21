@@ -36,6 +36,7 @@ rosws update
 rosdep  install --from-paths src --ignore-src -r -y
 ```
 ```
+export DISPLAY=:0
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app circle_launch.py
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
 ```
