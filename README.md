@@ -42,7 +42,7 @@ aws s3 cp ./bundle/output.tar s3://<s3 bucket name>/jetbot_robot_X86_64.tar
 ### Build, Bundle and Upload Simulation Workspace
 ```
 cd  ~/environment/jetbot/simulation_ws
-vcs import < .rosinstall
+rosws update
 rosdep  install --from-paths src --ignore-src -r -y
 colcon build
 colcon bundle
