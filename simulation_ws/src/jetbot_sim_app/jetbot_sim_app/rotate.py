@@ -37,7 +37,7 @@ class Rotator(Node):
         while rclpy.ok():
             twist.angular.z = 0.1
             self._cmd_pub.publish(twist)
-            self.get_logger().info('Rotating robot: {}'.format(twist))
+            #self.get_logger().info('Rotating robot: {}'.format(twist))
             time.sleep(0.1)
 
 

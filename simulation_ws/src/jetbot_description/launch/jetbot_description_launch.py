@@ -63,6 +63,15 @@ def generate_launch_description():
             'publish_frequency': 50.0,
             'robot_description': robot_description}],
         arguments=[urdf])
+    
+    start_joint_state_publisher_cmd = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        parameters=[{
+            'use_sim_time': use_sim_time,
+            'robot_description': robot_description}],
+        output='screen')
 
         
     # Create the launch description and populate
@@ -73,6 +82,7 @@ def generate_launch_description():
     
     # Add all actions
     ld.add_action(start_robot_state_publisher_cmd)
+    ld.add_action(start_joint_state_publisher_cmd)
         
     return ld
 
