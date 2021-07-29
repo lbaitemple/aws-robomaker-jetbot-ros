@@ -33,6 +33,7 @@ cd ~/environment/jetbot/assets/scripts
 ```
 cd  ~/environment/jetbot/simulation_ws
 rosws update
+rosdep update
 rosdep  install --from-paths src --ignore-src -r -y
 ```
 ```
