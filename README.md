@@ -46,14 +46,14 @@ colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_l
 Please modify `jetbot_description_launch.py` and `spawn_launch.py` from **jetbot_description** package if you want to use different URDF file.
 
 ### AWS Greengrass V1 Setup in Jetson Nano
-Log into Jetson Nano with JupyterLab and install Greengrass with following commands.
+Log into Jetson Nano with JupyterLab and install Greengrass core software with following commands.
 ```
 adduser --system ggc_user
 addgroup --system ggc_group
 wget https://d1onfpft10uf5o.cloudfront.net/greengrass-core/downloads/1.9.1/greengrass-linux-aarch64-1.9.1.tar.gz
 tar -xzvf greengrass-linux-aarch64-1.9.1.tar.gz -C /
 ```
-Update the CA certificate used by RoboMaker
+Download AWS ATS endpoint root certificate (CA)
 ```
 cd /greengrass/certs/
 wget -O root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
@@ -64,7 +64,7 @@ Upload Robot Cirtificate in Jetson nano and install it with following commands.
 ```
 unzip /workspace/<<robot_cert>>.zip -d /greengrass/
 ```
-Start Greengrass Core
+Start Greengrass Core.
 ```
 /greengrass/ggc/core/greengrassd start
 ```
