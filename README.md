@@ -59,7 +59,7 @@ cd /greengrass/certs/
 wget -O root.ca.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem
 ```
 
-# Run Greengrass
+### Run Greengrass
 Upload Robot Cirtificate in Jetson nano and install it with following commands.
 ```
 unzip /workspace/<<robot_cert>>.zip -d /greengrass/
