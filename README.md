@@ -45,7 +45,7 @@ colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_l
 ### Robot URDF file
 Please modify `jetbot_description_launch.py` and `spawn_launch.py` from **jetbot_description** package if you want to use different URDF file.
 
-### AWS Greengrass V1 Setup in Jetson Nano
+### Install AWS Greengrass V1 in Jetson Nano with jupytarLab
 Log into Jetson Nano with JupyterLab and install Greengrass core software with following commands.
 ```
 adduser --system ggc_user
