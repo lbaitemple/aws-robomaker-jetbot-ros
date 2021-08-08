@@ -23,7 +23,7 @@ chmod +x *.sh
 ```
 
 ### Setup Credentials for Joystick Control
-Copy AWS Credentials to `~/environment/jetbot/assets/scripts/resources/credentials` file and run following commands. Then download the `~/environment/jetbot/assets/teleop` folder for controlling jetbot with virtual joystick.
+Copy AWS Credentials to `~/environment/jetbot/assets/credentials/credentials` file and run following commands. Then download the `~/environment/jetbot/assets/teleop` folder for controlling jetbot with virtual joystick.
 ```
 cd ~/environment/jetbot/assets/scripts
 ./set_credentials.sh

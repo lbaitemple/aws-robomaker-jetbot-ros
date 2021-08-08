@@ -8,8 +8,6 @@ setup(
     version='0.0.0',
     packages=find_packages(),
     data_files=[
-        ('share/ament_index/resource_index/packages',
-            ['resource/' + PACKAGE_NAME]),
         ('share/' + PACKAGE_NAME, ['package.xml']),
         ('share/' + PACKAGE_NAME + '/launch', glob('launch/*')),
         ('share/' + PACKAGE_NAME + '/config', glob('config/*')),
