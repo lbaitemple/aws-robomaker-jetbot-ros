@@ -51,7 +51,7 @@ colcon build && source install/setup.bash && ros2 launch jetbot_sim_app circle_l
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
 ```
 
-### Build and Bundle Robot Workspace
+### Build, Bundle and Upload Robot Workspace
 ```
 cd ~/environment/jetbot
 sudo docker run --rm -ti -v $(pwd):/environment/jetbot  ros2-cross-compile:arm64
@@ -64,10 +64,7 @@ colcon build --build-base 'arm64/build' --install-base 'arm64/install'
 colcon bundle --build-base 'arm64/build' --install-base 'arm64/install' --bundle-base 'arm64/bundle'
 exit
 ```
-
-### Upload Robot Application to S3 Bucket
 ```
-cd ~/environment/jetbot
 aws s3 cp ./robot_ws/arm64/bundle/output.tar s3://<<s3 bucket name>>/jetbot-aarch64.tar
 ```
 
