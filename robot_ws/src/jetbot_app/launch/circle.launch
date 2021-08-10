@@ -1,4 +1,0 @@
-<launch>
-  <node name="move" pkg="jetbot_app" exec="move" />
-  <node name="circle" pkg="jetbot_app" exec="circle" />
-</launch>
