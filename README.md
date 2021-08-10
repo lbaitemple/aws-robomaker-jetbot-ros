@@ -9,6 +9,7 @@ ROS2 version of [JetBot ROS Application](https://github.com/jerwallace/aws-robom
 * [Animesh Bala Ani](https://animeshani.com/)
 * [Dr. Li Bai](https://engineering.temple.edu/about/faculty-staff/li-bai-lbai)
 
+# Initialization
 ### Download Workspace
 ```
 git clone -b ros2 https://github.com/ANI717/aws-robomaker-jetbot-ros
@@ -35,6 +36,7 @@ cd ~/environment/jetbot/assets/scripts
 sudo ./set_docker.sh
 ```
 
+# Robot and Simulation
 ### Robot URDF file
 Please modify `jetbot_description_launch.py` and `spawn_launch.py` from **jetbot_description** package if you want to use different URDF file.
 
@@ -78,8 +80,9 @@ colcon build --build-base 'arm64/build' --install-base 'arm64/install' && \
 source arm64/install/setup.bash && \
 ros2 launch jetbot_app teleop_launch.py
 ```
-Deployment Package is `jetbot_app` and launch files are `circle_launch.py` and `teleop_launch.py`.
 
+# Deployment
+Deployment Package is `jetbot_app` and launch files are `circle_launch.py` and `teleop_launch.py`.
 ### Install AWS Greengrass V1 in Jetson Nano
 Log into Jetson Nano and install Greengrass core software with following commands.
 ```
