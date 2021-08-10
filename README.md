@@ -30,7 +30,6 @@ cd ~/environment/jetbot/assets/scripts
 ```
 
 ### Create Docker Container for Cross Compilation
-Run following commands to create `ros2-cross-compile:arm64` docker container.
 ```
 cd ~/environment/jetbot/assets/scripts
 sudo ./set_docker.sh
@@ -50,6 +49,26 @@ rosdep  install --from-paths src --ignore-src -r -y
 export DISPLAY=:0
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app circle_launch.py
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
+```
+
+### Build and Bundle Robot Workspace
+```
+cd ~/environment/jetbot
+sudo docker run --rm -ti -v $(pwd):/environment/jetbot  ros2-cross-compile:arm64
+```
+```
+cd /environment/jetbot/robot_ws/
+apt update && rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --build-base 'arm64/build' --install-base 'arm64/install'
+colcon bundle --build-base 'arm64/build' --install-base 'arm64/install' --bundle-base 'arm64/bundle'
+exit
+```
+
+### Upload Robot Application to S3 Bucket
+```
+cd ~/environment/jetbot
+aws s3 cp ./robot_ws/arm64/bundle/output.tar s3://<<s3 bucket name>>/jetbot-aarch64.tar
 ```
 
 ### Install AWS Greengrass V1 in Jetson Nano
@@ -77,4 +96,4 @@ sudo /greengrass/ggc/core/greengrassd start
 ```
 
 ### Check Launch Log
-Open `launch.log` file from `/home/ggc_user/.ros/log/<hash number>/` directory
+Open `launch.log` file from `/home/ggc_user/.ros/log/<<hash number>>/` directory
