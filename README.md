@@ -67,6 +67,12 @@ exit
 ```
 aws s3 cp ./robot_ws/arm64/bundle/output.tar s3://<<s3 bucket name>>/jetbot-aarch64.tar
 ```
+Run following commands to test Robot Application while cross-compilation.
+```
+colcon build --build-base 'arm64/build' --install-base 'arm64/install' && \
+source arm64/install/setup.bash && \
+ros2 launch jetbot_app circle.launch
+```
 
 ### Install AWS Greengrass V1 in Jetson Nano
 Log into Jetson Nano and install Greengrass core software with following commands.
