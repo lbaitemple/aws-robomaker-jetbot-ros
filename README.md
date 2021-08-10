@@ -71,8 +71,9 @@ Run following commands to test Robot Application while cross-compilation.
 ```
 colcon build --build-base 'arm64/build' --install-base 'arm64/install' && \
 source arm64/install/setup.bash && \
-ros2 launch jetbot_app circle.launch
+ros2 launch jetbot_app circle_launch.py
 ```
+Deployment Package is `jetbot_app` and launch files are `circle_launch.py` and `teleop_launch.py`.
 
 ### Install AWS Greengrass V1 in Jetson Nano
 Log into Jetson Nano and install Greengrass core software with following commands.
