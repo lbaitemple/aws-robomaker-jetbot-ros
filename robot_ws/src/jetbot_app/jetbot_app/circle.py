@@ -30,14 +30,14 @@ class Rotator(Node):
         super().__init__('rotate')
         # For Foxy, qos_profile is a required field for create_publisher api
         # For Dashing, qos_profile is optional and defaults to 10.
-        self._cmd_pub = self.create_publisher(Twist, 'jetbot_diff_controller/cmd_vel', 10)
+        self._cmd_pub = self.create_publisher(Twist, 'cmd_vel', 10)
 
     def rotate_forever(self):
         twist = Twist()
         while rclpy.ok():
             twist.angular.z = 0.1
             self._cmd_pub.publish(twist)
-            self.get_logger().info('Rotating robot: {}'.format(twist))
+            #self.get_logger().info('Rotating robot: {}'.format(twist))
             time.sleep(0.1)
 
 

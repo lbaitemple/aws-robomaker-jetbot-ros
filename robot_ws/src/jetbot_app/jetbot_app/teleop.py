@@ -21,18 +21,18 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 LOGLEVEL = logging.DEBUG 
 LOGNAME = 'roslaunch'
 #Set the name of the certicate files located in
-#jetbot/simulation_ws/src/jetbot_app/config
+#jetbot/simulation_ws/src/jetbot_sim_app/config
 CAFILE = 'root.ca.pem'
 KEYFILE = 'private.pem.key'
 CERTIFICATEFILE = 'certificate.pem.crt'
 #MQTT Settings
 #ClientID and Topics should be unique for all MQTT connections
 TOPIC = 'joystick1'
-CLIENTID = 'jetbot_app1'
+CLIENTID = 'jetbot_sim_app1'
 #ENDPOINT = os.environ['IOT_ENDPOINT'].lower()
-from jetbot_app.endpoint import ENDPOINT
+from jetbot_sim_app.endpoint import ENDPOINT
 #ROS Settings, for example application name
-ROSAPP = 'jetbot_app'
+ROSAPP = 'jetbot_sim_app'
 
 
 def setup_logging(loglevel = LOGLEVEL, logname = LOGNAME):
@@ -57,7 +57,7 @@ class Teleop(Node):
     def __init__(self):
         super().__init__('teleop')
         
-        self._cmd_pub = self.create_publisher(Twist, 'jetbot_diff_controller/cmd_vel', 1)
+        self._cmd_pub = self.create_publisher(Twist, 'cmd_vel', 1)
         self.twist = Twist()
         self.mqtt_client = self.mqtt_connect()
 
@@ -92,7 +92,7 @@ class Teleop(Node):
         The JSON message is read from the Teleop.MQTTTOPIC, converted to a Twist message
         and published to the Teleop.ROSTOPIC
         """
-        setup_logging().info('Received from %s, message: %s', TOPIC, message.payload)
+        #setup_logging().info('Received from %s, message: %s', TOPIC, message.payload)
         payload = json.loads(message.payload)
         self.twist.angular.x = float(payload["angular"]["x"])
         self.twist.angular.y = float(payload["angular"]["y"])
@@ -101,7 +101,7 @@ class Teleop(Node):
         self.twist.linear.y = float(payload["linear"]["y"])
         self.twist.linear.z = float(payload["linear"]["z"])
         self._cmd_pub.publish(self.twist)
-        setup_logging().info('Joystick message published to ROS')
+        #setup_logging().info('Joystick message published to ROS')
         return
 
     def subscribe_joystick(self):
@@ -110,7 +110,7 @@ class Teleop(Node):
 
         Any new messages will be sent to the callback for processing
         """
-        setup_logging().info("Subsribing to topic %s", TOPIC)
+        #setup_logging().info("Subsribing to topic %s", TOPIC)
         self.mqtt_client.subscribe(TOPIC, 1, self.custom_callback)
         return
 
@@ -129,7 +129,7 @@ class Teleop(Node):
 
 
 def main(args=None):
-    setup_logging().info('jetbot_app Teleop Node starting...')
+    setup_logging().info('jetbot_sim_app Teleop Node starting...')
     rclpy.init(args=args)
     teleop = Teleop()
     teleop.run_robot()

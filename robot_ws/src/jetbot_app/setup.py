@@ -13,7 +13,6 @@ setup(
         ('share/' + PACKAGE_NAME, ['package.xml']),
         ('share/' + PACKAGE_NAME + '/launch', glob('launch/*')),
         ('share/' + PACKAGE_NAME + '/config', glob('config/*')),
-        ('share/' + PACKAGE_NAME + '/deploymentScripts', glob('deploymentScripts/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -24,7 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'circle = jetbot_app.rotate:main',
+            'circle = jetbot_app.circle:main',
             'teleop = jetbot_app.teleop:main',
             'move = jetbot_app.move:main',
         ],

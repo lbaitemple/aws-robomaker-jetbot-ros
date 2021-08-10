@@ -10,6 +10,12 @@
   <maintainer email="animesh.ani@live.com">ANI717</maintainer>
   <license>MIT-0</license>
   
+  <depend>time</depend>
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>awsiotpythonsdk-pip</depend>
+  
+  <!--
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
@@ -21,6 +27,7 @@
   <depend>smbus</depend>
   <depend>yaml</depend>
   <depend>yaml-pip</depend>
+  -->
   
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
