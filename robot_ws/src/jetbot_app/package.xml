@@ -11,8 +11,6 @@
   <license>MIT-0</license>
   
   <depend>time</depend>
-  <depend>rclpy</depend>
-  <depend>geometry_msgs</depend>
   <depend>awsiotpythonsdk-pip</depend>
   
   <!--
