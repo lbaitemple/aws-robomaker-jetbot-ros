@@ -68,3 +68,6 @@ Start Greengrass Core.
 ```
 sudo /greengrass/ggc/core/greengrassd start
 ```
+
+### Check Launch Log
+Open `launch.log` file from '/home/ggc_user/.ros/log/<hash number>/' directory
