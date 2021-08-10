@@ -1,7 +1,0 @@
-<launch>
-  
-  <node name="teleop" pkg="jetbot_app" exec="teleop" output="screen" />
-  <node name="move" pkg="jetbot_app" exec="move" output="screen" />
-
-  
-</launch>
