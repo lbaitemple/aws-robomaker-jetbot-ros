@@ -29,6 +29,16 @@ cd ~/environment/jetbot/assets/scripts
 ./set_credentials.sh
 ```
 
+### Create Docker Container for Cross Compilation
+Run following commands to create `ros2-cross-compile:arm64` docker container.
+```
+cd ~/environment/jetbot/assets/scripts
+sudo ./set_docker.sh
+```
+
+### Robot URDF file
+Please modify `jetbot_description_launch.py` and `spawn_launch.py` from **jetbot_description** package if you want to use different URDF file.
+
 ### Build, Source and Run Simulation Workspace
 ```
 cd  ~/environment/jetbot/simulation_ws
@@ -41,9 +51,6 @@ export DISPLAY=:0
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app circle_launch.py
 colcon build && source install/setup.bash && ros2 launch jetbot_sim_app teleop_launch.py
 ```
-
-### Robot URDF file
-Please modify `jetbot_description_launch.py` and `spawn_launch.py` from **jetbot_description** package if you want to use different URDF file.
 
 ### Install AWS Greengrass V1 in Jetson Nano
 Log into Jetson Nano and install Greengrass core software with following commands.
