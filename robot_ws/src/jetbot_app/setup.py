@@ -25,7 +25,7 @@ setup(
         'console_scripts': [
             'circle = jetbot_app.circle:main',
             'teleop = jetbot_app.teleop:main',
-            'move = jetbot_app.qwiic_move:main',
+            'move = jetbot_app.adafruit_move:main',
         ],
     },
 )
