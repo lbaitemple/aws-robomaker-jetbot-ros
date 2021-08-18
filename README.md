@@ -109,3 +109,7 @@ sudo /greengrass/ggc/core/greengrassd start
 
 ### Check Launch Log
 Open `launch.log` file from `/home/ggc_user/.ros/log/<<hash number>>/` directory
+
+
+# Install ROS2
+Follow instructions from [official site](https://docs.ros.org/en/dashing/Installation/Ubuntu-Install-Debians.html) to install ROS2 in Jetson Nano.
