@@ -11,6 +11,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     install_requires=[
         'setuptools',
+        'time',
         'Adafruit-MotorHAT',
         'Adafruit-SSD1306',
         'sparkfun-qwiic-scmd',
