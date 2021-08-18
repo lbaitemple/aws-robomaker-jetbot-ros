@@ -45,7 +45,7 @@ def generate_launch_description():
     
     # Add all actions
     ld.add_action(circle_cmd)
-    #ld.add_action(move_cmd)
+    ld.add_action(move_cmd)
         
     return ld
 
