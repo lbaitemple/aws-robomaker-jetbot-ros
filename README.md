@@ -111,5 +111,6 @@ sudo /greengrass/ggc/core/greengrassd start
 Open `launch.log` file from `/home/ggc_user/.ros/log/<<hash number>>/` directory
 
 
-# Install ROS2
-Follow instructions from [official site](https://docs.ros.org/en/dashing/Installation/Ubuntu-Install-Debians.html) to install ROS2 in Jetson Nano.
+# Jetbot Setup
+Follow instructions from [here](https://github.com/ANI717/headless_jetsonnano_setup) and [here](https://github.com/lbaitemple/jetbot_nividia_nano) to setup a Jetson Nano in headless mode.
+Follow instructions from [ROS2 Dashing Official Site](https://docs.ros.org/en/dashing/Installation/Ubuntu-Install-Debians.html) to install ROS2 in Jetson Nano.
