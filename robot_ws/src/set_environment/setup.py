@@ -12,11 +12,10 @@ setup(
     install_requires=[
         'setuptools',
         'time',
+        'multiexit',
+        'traitlets',
         'Adafruit-MotorHAT',
         'Adafruit-SSD1306',
-        'sparkfun-qwiic-scmd',
-        'smbus',
-        'AWSIoTPythonSDK',
-        'greengrasssdk'
+        'AWSIoTPythonSDK'
     ]
 )

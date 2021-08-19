@@ -35,7 +35,8 @@ class Rotator(Node):
     def rotate_forever(self):
         twist = Twist()
         while rclpy.ok():
-            twist.angular.z = 0.1
+            twist.linear.x = 0.0
+            twist.angular.z = 1.0
             self._cmd_pub.publish(twist)
             #self.get_logger().info('Rotating robot: {}'.format(twist))
             time.sleep(0.1)
