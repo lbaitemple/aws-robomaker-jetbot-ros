@@ -42,6 +42,7 @@ Please modify `jetbot_description_launch.py` and `spawn_launch.py` from **jetbot
 
 ### Build, Source and Run Simulation Workspace
 ```
+sudo apt-get update
 cd  ~/environment/jetbot/simulation_ws
 rosws update
 rosdep update
