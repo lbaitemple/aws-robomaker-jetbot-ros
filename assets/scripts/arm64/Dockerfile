@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y apt-transport-https \
 && echo "deb https://packages.ubiquityrobotics.com/ubuntu/ubiquity xenial main" > /etc/apt/sources.list.d/ubiquity-latest.list 
 
 ## supress error
-RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C3032ED8  >> /dev/null 2>&1 
+RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654  >> /dev/null 2>&1 
+
 
 
 # Install Python and colcon
