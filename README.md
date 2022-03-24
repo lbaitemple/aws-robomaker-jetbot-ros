@@ -14,8 +14,7 @@ IAM role arn, IoT endpoint, Public VPC Subnet IDs (2), security group, S3 bucket
     ```
     # change to the environment directory
     cd ~/environment
-    git clone -b aarch64 https://github.com/lbaitemple/aws-robomaker-jetbot-ros
-    mv aws-robomaker-jetbot-ros jetbot
+    git clone -b aarch64 https://github.com/lbaitemple/aws-robomaker-jetbot-ros jetbot
     ```
 
 ### Install Dependencies [~15 mins]
