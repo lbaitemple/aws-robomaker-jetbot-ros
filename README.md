@@ -66,7 +66,8 @@ colcon bundle
 ```
 
 To find IoT endpoint, you can use
-<img src="img/aws.png" width="100" height="100">
+
+<img src="img/aws.png" width="300" height="100">
 
 1. Open the roboMakerSetting.json file in the **jetbot** directory and input S3 bucket, IAM role, MQTT endpoint and VPC public subnet ids and security group ids.
 
