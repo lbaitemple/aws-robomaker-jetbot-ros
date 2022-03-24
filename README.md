@@ -66,9 +66,8 @@ colcon bundle
 ```
 
 To find IoT endpoint, you can use
-```
-aws iot describe-endpoint
-```
+![Alt text](img/aws.png?raw=true "AWS endpoint description in AWS academy")
+
 1. Open the roboMakerSetting.json file in the **jetbot** directory and input S3 bucket, IAM role, MQTT endpoint and VPC public subnet ids and security group ids.
 
 1. Click Run, Add or Edit Configurations, select the roboMakerSettings.json file from jetbot directory
